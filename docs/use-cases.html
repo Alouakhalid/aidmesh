@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Use cases | AidMesh</title>
+<meta name="description" content="Where an AI crisis-triage crew helps: floods, earthquakes, fires, blackouts and rumour control.">
+<link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
+</head><body data-scene="globe">
+<canvas id="bg"></canvas>
+<nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
+<button id="burger">☰</button>
+<div id="links"><a href="index.html">Home</a><a class="here" href="use-cases.html">Use cases</a><a href="verify.html">The crew</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
+<main>
+<section class="hero" style="min-height:70vh">
+<div class="kicker">USE CASES</div>
+<h1>One crew,<br><span>every kind of bad day.</span></h1>
+<p class="lead">AidMesh is not tied to one disaster type. Anything that produces a flood of raw, multilingual, contradictory reports is exactly what the crew eats.</p>
+</section>
+
+<section><h2><small>WHERE IT HELPS</small>Six scenarios, one pipeline</h2>
+<div class="grid">
+<div class="card uc"><div class="emoji">🌊</div><h3>Flash floods</h3><p>Trapped families, blocked roads, shelters asking for supplies. This is our recorded demo: Alexandria, six reports, five real incidents, one rumour killed.</p></div>
+<div class="card uc" style="border-left-color:var(--r)"><div class="emoji">🏚️</div><h3>Earthquakes</h3><p>Collapse reports arrive by the hundred within minutes. Verify merges duplicates from the same building, Triage puts voids with survivors first.</p></div>
+<div class="card uc" style="border-left-color:var(--y)"><div class="emoji">🔥</div><h3>Wildfires</h3><p>Fast-moving fronts mean fast-moving rumours. The crew tracks which evacuation reports are corroborated and which are recycled old photos.</p></div>
+<div class="card uc" style="border-left-color:var(--g)"><div class="emoji">⚡</div><h3>Blackouts and grid failure</h3><p>Hospitals on generators, dialysis patients on the clock. Dispatch names fuel and biomedical crews with the safe first action, like in our demo's Sidi Gaber clinic incident.</p></div>
+<div class="card uc" style="border-left-color:var(--b)"><div class="emoji">🚗</div><h3>Mass-casualty road incidents</h3><p>Conflicting casualty counts from bystanders get a RUMOUR or UNVERIFIED label until a second source lands, so ambulances go where they are actually needed.</p></div>
+<div class="card uc" style="border-left-color:var(--a)"><div class="emoji">📢</div><h3>Rumour control</h3><p>Alert issues bilingual public corrections. In the demo run it publicly defused a fake "dam collapse, thousands dead" post in Arabic and English.</p></div></div></section>
+
+<section><h2><small>WALKTHROUGH</small>A flood night in Alexandria, minute by minute</h2>
+<p class="lead">This is the actual recorded run that ships with the repo. Follow one night through the pipeline.</p>
+<div class="step"><div class="n">1</div><div><h4>Reports pour in</h4><p>A call in Egyptian Arabic about a family trapped in Manshiya. A tweet in English describing the same family. An SMS from a shelter in Agami. A post about a live wire near Stanley Bridge. A viral dam-collapse rumour. A clinic losing power with 6 dialysis patients.</p></div></div>
+<div class="step"><div class="n">2</div><div><h4>LangChain structures the chaos</h4><p>Every report becomes a clean incident object: need, location, people affected, life-threatening flag, language. Arabic and English treated as first-class citizens.</p></div></div>
+<div class="step"><div class="n">3</div><div><h4>The crew takes over</h4><p>Verify merges the two Manshiya reports into one VERIFIED incident and marks the dam post RUMOUR. Triage ranks: trapped family P1, live wire P1, clinic P2, shelter P3, rumour P3. Dispatch assigns swift-water rescue, an electrical-hazard team and a generator crew, each with its first safe action.</p></div></div>
+<div class="step"><div class="n">4</div><div><h4>The public hears the truth</h4><p>Alert sends bilingual guidance to responders and a public correction: no confirmed dam collapse, stay calm, await official updates.</p></div></div>
+<a class="btn p" href="demo.html">▶ Replay this run</a></section>
+
+<section><h2><small>WHO IT IS FOR</small>Built for real coordination rooms</h2>
+<div class="grid">
+<div class="card"><h3>🏛️ Civil defence and municipalities</h3><p>A first-pass triage layer on top of hotlines and social media during the first chaotic hours.</p></div>
+<div class="card"><h3>🤝 NGOs and volunteer networks</h3><p>Turn scattered WhatsApp and Facebook posts into a ranked, deduplicated needs list for shelter supply runs.</p></div>
+<div class="card"><h3>📰 Newsrooms</h3><p>A verification assistant that labels what is corroborated, unverified or rumour before anything is published.</p></div></div>
+<p class="note">Honest scope: AidMesh assists human coordinators. Verification labels, not blind trust, are the safety feature, and a human keeps the final veto on every dispatch.</p></section>
+</main>
+<footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
+<script type="module" src="assets/app.js"></script>
+</body></html>

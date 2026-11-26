@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Live replay | AidMesh</title>
+<meta name="description" content="Replay a real recorded AidMesh crew run on six Alexandria flood reports, stage by stage.">
+<link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
+</head><body data-scene="demo">
+<canvas id="bg"></canvas>
+<nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
+<button id="burger">☰</button>
+<div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a href="verify.html">The crew</a><a class="here" href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
+<main>
+<section class="hero" style="min-height:56vh">
+<div class="kicker">LIVE REPLAY</div>
+<h1>Watch the crew<br><span>work a real night.</span></h1>
+<p class="lead">This is a recorded real run of the Python crew (LangChain intake, then four CrewAI agents on Groq) over six Alexandria flood reports. Press run to replay it stage by stage. Nothing here is mocked.</p>
+</section>
+
+<section><h2><small>THE RUN</small>Six reports in, one plan out</h2>
+<button class="run" id="go">▶ Run the crew</button>
+<div class="demo">
+<div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>incoming · reports.json</span></div><div id="in"></div></div>
+<div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>crew · stdout</span></div><div class="tabs" id="tabs"></div><pre class="term" id="out">Waiting for run…</pre></div>
+</div>
+<p class="note">Honesty label: this replay reads the recorded output of a real run (docs/data/run.json in the repo). A hosted live API for running the crew from this page is in progress.</p></section>
+
+<section><h2><small>THE INTAKE</small>What LangChain extracted</h2>
+<p class="lead">Before the crew starts, every raw report becomes a structured incident. This is the actual extracted JSON from the same run.</p>
+<div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>intake · incidents.json</span></div><pre class="term" id="inc">Loading…</pre></div>
+<div class="next"><a href="alert.html"><small>← BACK</small><h4>📣 Community Communicator</h4></a><a href="https://github.com/Alouakhalid/aidmesh" style="text-align:right"><small>RUN IT YOURSELF</small><h4>Clone the repo →</h4></a></div></section>
+</main>
+<footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
+<script type="module" src="assets/app.js"></script>
+<script type="module">
+const D=await fetch('data/run.json').then(r=>r.json());
+document.getElementById('inc').textContent=JSON.stringify(D.incidents,null,1);
+const inn=document.getElementById('in'),out=document.getElementById('out'),tabs=document.getElementById('tabs');
+const names={verification:'🛡️ Verify',triage:'🎯 Triage',dispatch:'🚁 Dispatch',communication:'📣 Alerts'};
+Object.entries(names).forEach(([k,v])=>{const b=document.createElement('button');b.textContent=v;b.onclick=()=>show(k);b.dataset.k=k;tabs.appendChild(b)});
+function show(k){tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k==k));out.textContent=D.stages[k]}
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+document.getElementById('go').onclick=async()=>{inn.innerHTML='';out.textContent='Intake: extracting incidents…';tabs.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+ for(const x of D.reports){inn.insertAdjacentHTML('beforeend',`<div class="rep ${/[\u0600-\u06FF]/.test(x.text)?'rtl':''}"><b>${x.id}</b> <span class="tag P3">${x.source}</span><br>${x.text.replace(/</g,'&lt;')}</div>`);await wait(450)}
+ for(const k of Object.keys(names)){out.textContent='Agent working: '+names[k]+'…';await wait(900);show(k);await wait(1500)}};
+</script>
+</body></html>

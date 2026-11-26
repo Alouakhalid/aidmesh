@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Triage agent | AidMesh</title>
+<meta name="description" content="The AidMesh Triage Lead ranks every verified incident P1, P2 or P3 by threat to life.">
+<link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
+</head><body data-scene="triage">
+<canvas id="bg"></canvas>
+<nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
+<button id="burger">☰</button>
+<div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a class="here" href="verify.html">The crew</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
+<main>
+<section class="hero" style="min-height:62vh">
+<div class="kicker">AGENT 02 · CREWAI</div>
+<h1>🎯 The Triage<br><span>Lead</span></h1>
+<p class="lead">Everything is urgent to someone. The Triage Lead decides what is urgent to everyone: a hard P1, P2, P3 ranking by threat to life, with the reasoning attached.</p>
+<div class="badges"><i>Role: Triage Lead</i><i>Goal: the right thing first</i><i>Priority: P1 / P2 / P3</i></div>
+</section>
+
+<section><h2><small>WHAT IT DOES</small>Ruthless, explainable ordering</h2>
+<div class="feat"><div class="ic">🫁</div><div><h4>Life threat first</h4><p>A trapped family with an elder struggling to breathe and a live wire in flood water both land at P1. Nothing outranks breathing.</p></div></div>
+<div class="feat"><div class="ic">⏳</div><div><h4>Time-window reasoning</h4><p>Six dialysis patients with three hours of generator fuel left are P2: not dying this minute, dead if ignored. The clock is part of the ranking.</p></div></div>
+<div class="feat"><div class="ic">🕳️</div><div><h4>Rumours sink</h4><p>The unverified dam-collapse rumour drops to P3. It still gets attention, but from a recon drone, not a rescue fleet.</p></div></div>
+<div class="feat"><div class="ic">🗒️</div><div><h4>Every rank has a reason</h4><p>No black box. Each line of output says why an incident sits where it sits, so a human can override it intelligently.</p></div></div></section>
+
+<section><h2><small>REAL OUTPUT</small>From the recorded demo run</h2>
+<div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>triage-agent · output.txt</span></div><pre class="term" id="out" data-stage="triage"></pre></div></section>
+
+<section><h2><small>WHY IT MATTERS</small>Order is a decision someone must own</h2>
+<div class="grid">
+<div class="card"><h3>Before AidMesh</h3><p>Whoever shouts loudest in the coordination chat gets the boat. Quiet, time-critical cases like the clinic wait until it is too late.</p></div>
+<div class="card"><h3>With Triage</h3><p>A defensible order, in writing, in seconds. Commanders can disagree with it, and that argument is exactly the one worth having.</p></div></div>
+<div class="next"><a href="verify.html"><small>← PREVIOUS AGENT</small><h4>🛡️ Verification Analyst</h4></a><a href="dispatch.html" style="text-align:right"><small>NEXT AGENT</small><h4>🚁 Resource Dispatcher →</h4></a></div></section>
+</main>
+<footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
+<script type="module" src="assets/app.js"></script>
+<script type="module">
+const el=document.getElementById('out');
+const d=await fetch('data/run.json').then(r=>r.json());
+const txt=d.stages[el.dataset.stage];
+let i=0;el.innerHTML='<span class="cursor"></span>';
+const id=setInterval(()=>{i+=6;if(i>=txt.length){el.textContent=txt;clearInterval(id)}else el.innerHTML=txt.slice(0,i).replace(/</g,'&lt;')+'<span class="cursor"></span>'},12);
+</script>
+</body></html>

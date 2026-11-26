@@ -2,123 +2,52 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AidMesh | AI crew that turns crisis chaos into action</title>
-<meta name="description" content="AidMesh: LangChain + CrewAI + Groq agents verify, rank and dispatch crisis reports in minutes.">
-<link rel="icon" href="favicon.svg">
-<style>
-:root{--bg:#070b16;--card:#0f1630cc;--line:#ffffff1a;--a:#22d3ee;--b:#a78bfa;--r:#fb7185;--y:#fbbf24;--g:#34d399;--t:#e6ebff;--m:#93a0c8}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--t);font:16px/1.6 Inter,system-ui,Segoe UI,Roboto,sans-serif;overflow-x:hidden}
-#bg{position:fixed;inset:0;z-index:0}
-main,nav,footer{position:relative;z-index:1}
-nav{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;backdrop-filter:blur(12px);background:#070b16aa;border-bottom:1px solid var(--line)}
-nav b{display:flex;gap:10px;align-items:center;font-size:18px}nav img{width:30px;height:30px}
-nav a{color:var(--m);text-decoration:none;margin-left:22px;font-size:14px;transition:.2s}nav a:hover{color:var(--a)}
-section{padding:110px 5vw 40px;max-width:1150px;margin:auto}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
-h1{font-size:clamp(40px,7vw,84px);line-height:1.02;margin:0 0 20px;letter-spacing:-2px}
-h1 span{background:linear-gradient(90deg,var(--a),var(--b),var(--r));-webkit-background-clip:text;color:transparent;background-size:200%;animation:sh 6s linear infinite}
-@keyframes sh{to{background-position:200%}}
-.lead{font-size:clamp(17px,2vw,22px);color:var(--m);max-width:680px}
-.btn{display:inline-block;padding:13px 24px;border-radius:12px;font-weight:600;text-decoration:none;margin:22px 12px 0 0;transition:.25s}
-.p{background:linear-gradient(90deg,var(--a),var(--b));color:#05101f}.p:hover{transform:translateY(-3px);box-shadow:0 10px 30px #22d3ee55}
-.s{border:1px solid var(--line);color:var(--t)}.s:hover{border-color:var(--a);transform:translateY(-3px)}
-.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
-.badges i{font-style:normal;border:1px solid var(--line);padding:5px 14px;border-radius:99px;font-size:13px;color:var(--m);background:#ffffff08}
-h2{font-size:clamp(28px,4vw,46px);margin:0 0 10px;letter-spacing:-1px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:26px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;backdrop-filter:blur(10px);transition:.3s;opacity:0;transform:translateY(30px)}
-.card.in{opacity:1;transform:none}.card:hover{border-color:var(--a);transform:translateY(-6px) rotateX(3deg);box-shadow:0 18px 40px #0008}
-.card h3{margin:6px 0}.card p{color:var(--m);margin:0}
-.big{font-size:44px;font-weight:800;background:linear-gradient(90deg,var(--r),var(--y));-webkit-background-clip:text;color:transparent}
-.pipe{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch;margin-top:26px}
-.node{flex:1;min-width:170px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;cursor:pointer;transition:.3s;position:relative}
-.node:hover,.node.on{border-color:var(--a);box-shadow:0 0 30px #22d3ee33;transform:translateY(-5px)}
-.node small{color:var(--b);font-weight:700;letter-spacing:1px}.node h4{margin:4px 0}.node p{margin:0;color:var(--m);font-size:14px}
-.arrow{align-self:center;color:var(--a);font-size:22px;animation:pu 1.4s infinite}@keyframes pu{50%{transform:translateX(6px)}}
-.demo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
-@media(max-width:800px){.demo{grid-template-columns:1fr}.arrow{display:none}nav a{display:none}}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;min-height:340px;max-height:560px;overflow:auto}
-.rep{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;font-size:14px;animation:fi .5s both}
-@keyframes fi{from{opacity:0;transform:translateX(-14px)}}
-.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;margin-right:6px}
-.V{background:#34d39922;color:var(--g)}.U{background:#fbbf2422;color:var(--y)}.R{background:#fb718522;color:var(--r)}.P1{background:#fb718533;color:var(--r)}.P2{background:#fbbf2433;color:var(--y)}.P3{background:#22d3ee22;color:var(--a)}
-pre{white-space:pre-wrap;font:13px/1.55 ui-monospace,Menlo,monospace;color:#cfe0ff;margin:0}
-button{font:inherit;cursor:pointer}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.tabs button{background:#ffffff0a;color:var(--m);border:1px solid var(--line);padding:7px 14px;border-radius:10px;transition:.2s}.tabs button.on,.tabs button:hover{color:#05101f;background:var(--a)}
-.run{background:linear-gradient(90deg,var(--a),var(--b));border:0;color:#05101f;font-weight:700;padding:12px 22px;border-radius:12px}
-footer{padding:60px 5vw;text-align:center;color:var(--m);font-size:14px}
-.stack{display:flex;gap:14px;flex-wrap:wrap}.stack .card{flex:1;min-width:200px}
-.rtl{direction:rtl;text-align:right}
-</style></head><body>
+<meta name="description" content="AidMesh: LangChain + CrewAI + Groq agents verify, rank and dispatch crisis reports in seconds.">
+<link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
+</head><body data-scene="mesh">
 <canvas id="bg"></canvas>
-<nav><b><img src="assets/logo.svg" alt="">AidMesh</b><div><a href="#problem">Problem</a><a href="#crew">The crew</a><a href="#demo">Live replay</a><a href="#stack">Stack</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
+<nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
+<button id="burger">☰</button>
+<div id="links"><a class="here" href="index.html">Home</a><a href="use-cases.html">Use cases</a><a href="verify.html">The crew</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
 <main>
 <section class="hero">
 <div class="badges" style="margin:0 0 20px"><i>🏆 PromptWars × AI Vibeathon 2026</i><i>LangChain</i><i>CrewAI</i><i>Groq</i></div>
 <h1>When disaster hits,<br><span>information is the first flood.</span></h1>
 <p class="lead">AidMesh is a crew of AI agents that reads raw, multilingual crisis reports, kills rumours, ranks what is life-threatening and hands responders a safe first action. In seconds, not hours.</p>
-<div><a class="btn p" href="#demo">Watch the crew work</a><a class="btn s" href="https://github.com/Alouakhalid/aidmesh">View the code</a></div>
+<div><a class="btn p" href="demo.html">Watch the crew work</a><a class="btn s" href="use-cases.html">Explore use cases</a></div>
 </section>
 
-<section id="problem"><h2>The real problem</h2><p class="lead">Emergency rooms drown in noise: duplicate calls, panicked posts, Arabic and English mixed, and rumours that send rescue teams to the wrong place.</p>
+<section><h2><small>THE REAL PROBLEM</small>Emergency response drowns in noise</h2>
+<p class="lead">Duplicate calls, panicked posts, Arabic and English mixed, and rumours that send rescue teams to the wrong place. Every minute spent sorting noise is a minute nobody is rescued.</p>
 <div class="grid">
-<div class="card"><div class="big" data-n="6">0</div><h3>raw reports</h3><p>for only 5 real situations in our demo. One is a pure rumour.</p></div>
-<div class="card"><div class="big" data-n="2">0</div><h3>languages at once</h3><p>Arabic dialect and English, normalised without losing facts.</p></div>
+<div class="card"><div class="big" data-n="6">0</div><h3>raw reports</h3><p>for only 5 real situations in our demo run. One is a pure rumour.</p></div>
+<div class="card"><div class="big" data-n="2">0</div><h3>languages at once</h3><p>Egyptian Arabic and English, normalised without losing facts.</p></div>
 <div class="card"><div class="big" data-n="4">0</div><h3>specialist agents</h3><p>Each owns one job, and each hands off to the next.</p></div>
-<div class="card"><div class="big">&lt; 30s</div><h3>report to plan</h3><p>Measured on Groq for the whole 6-report run.</p></div></div></section>
+<div class="card"><div class="big">5</div><h3>verified incidents out</h3><p>Duplicates merged, the rumour flagged, priorities set.</p></div></div></section>
 
-<section id="crew"><h2>Meet the crew</h2><p class="lead">LangChain structures the chaos. CrewAI runs four agents in sequence. Groq makes it fast enough to matter. Click a stage.</p>
-<div class="pipe" id="pipe"></div><div class="panel" style="min-height:120px;margin-top:18px"><pre id="stagetext">Click a stage above to read its real output from the demo run.</pre></div></section>
+<section><h2><small>THE PIPELINE</small>One crew, five stages</h2>
+<p class="lead">LangChain structures the chaos. CrewAI runs four specialist agents in sequence. Groq makes it fast enough to matter. Open any stage to see what it does and its real output.</p>
+<div class="pipe">
+<a class="node" href="verify.html"><small>01 · CREWAI</small><h4>🛡️ Verify</h4><p>Dedupe reports and kill rumours before they kill time.</p></a><div class="arrow">➜</div>
+<a class="node" href="triage.html"><small>02 · CREWAI</small><h4>🎯 Triage</h4><p>Rank every incident P1, P2 or P3 by threat to life.</p></a><div class="arrow">➜</div>
+<a class="node" href="dispatch.html"><small>03 · CREWAI</small><h4>🚁 Dispatch</h4><p>Match resources and name the first safe action.</p></a><div class="arrow">➜</div>
+<a class="node" href="alert.html"><small>04 · CREWAI</small><h4>📣 Alert</h4><p>Arabic and English public alerts, plus rumour correction.</p></a>
+</div>
+<div class="next"><a href="verify.html"><small>START THE TOUR</small><h4>Meet the Verification Analyst →</h4></a></div></section>
 
-<section id="demo"><h2>Live replay</h2><p class="lead">This is a recorded real run (not mocked) of the Python crew on six reports. Press run to replay it step by step.</p>
-<button class="run" id="go">▶ Run the crew</button>
-<div class="demo"><div class="panel"><b>Incoming reports</b><div id="in"></div></div>
-<div class="panel"><b>Crew output</b><div class="tabs" id="tabs"></div><pre id="out">Waiting for run…</pre></div></div></section>
+<section><h2><small>WHY IT IS DIFFERENT</small>Built for the worst day, not the demo day</h2>
+<div class="grid">
+<div class="card"><h3>🌐 Multilingual by default</h3><p>A panicked voice note in Egyptian Arabic and a tweet in English about the same flood become one incident, not two dispatches.</p></div>
+<div class="card"><h3>🧯 Rumour firewall</h3><p>A viral "dam collapsed, thousands dead" post gets flagged as a rumour with a public correction, instead of triggering panic deployment.</p></div>
+<div class="card"><h3>🦺 Safety-first dispatch</h3><p>Every recommendation names the hazard to check before moving: live wires, currents, fuel, unstable structures.</p></div>
+<div class="card"><h3>🔍 Honest by design</h3><p>Every incident carries VERIFIED, UNVERIFIED or RUMOUR. Humans keep the veto. AidMesh assists dispatchers, it does not replace them.</p></div></div></section>
 
-<section id="stack"><h2>Built with</h2><div class="stack">
-<div class="card in"><h3>LangChain</h3><p>Structured intake with Pydantic schema. Arabic and English to clean incident objects.</p></div>
-<div class="card in"><h3>CrewAI</h3><p>Verifier, Triage Lead, Dispatcher and Communicator agents in a sequential process.</p></div>
-<div class="card in"><h3>Groq</h3><p>gpt-oss-120b on Groq for very low latency inference.</p></div>
-<div class="card in"><h3>Three.js</h3><p>The 3D mesh behind this page. Nodes are agents and incidents.</p></div></div>
-<p class="lead" style="margin-top:26px">Honest limits: it assists humans, it does not replace dispatchers. In our run the crew ranked the rumour low but still proposed a recon, which a human should veto. Verification labels are the main safety feature.</p></section>
+<div class="marquee"><div>VERIFY · TRIAGE · DISPATCH · ALERT ·&nbsp; VERIFY · TRIAGE · DISPATCH · ALERT ·&nbsp; VERIFY · TRIAGE · DISPATCH · ALERT ·&nbsp; VERIFY · TRIAGE · DISPATCH · ALERT ·&nbsp; VERIFY · TRIAGE · DISPATCH · ALERT ·&nbsp; VERIFY · TRIAGE · DISPATCH · ALERT ·&nbsp; </div></div>
+
+<section><h2><small>SEE IT RUN</small>A real recorded run, step by step</h2>
+<p class="lead">Six raw reports from a flooded Alexandria go in. A verified, ranked, dispatched response plan comes out. Watch the replay.</p>
+<a class="btn p" href="demo.html">▶ Open the live replay</a><a class="btn s" href="https://github.com/Alouakhalid/aidmesh">Read the code</a></section>
 </main>
 <footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
-
-<script type="module">
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
-const cv=document.getElementById('bg');const r=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
-r.setPixelRatio(Math.min(devicePixelRatio,2));const sc=new THREE.Scene();const cam=new THREE.PerspectiveCamera(60,1,.1,200);cam.position.z=26;
-function rs(){r.setSize(innerWidth,innerHeight);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()}rs();addEventListener('resize',rs);
-const N=70,pts=[],g=new THREE.Group();sc.add(g);
-const cols=[0x22d3ee,0xa78bfa,0xfb7185];
-for(let i=0;i<N;i++){const m=new THREE.Mesh(new THREE.SphereGeometry(i%9==0?.35:.16,12,12),new THREE.MeshBasicMaterial({color:cols[i%9==0?2:i%2]}));
- m.position.set((Math.random()-.5)*40,(Math.random()-.5)*26,(Math.random()-.5)*20);m.userData.v=new THREE.Vector3((Math.random()-.5)*.01,(Math.random()-.5)*.01,(Math.random()-.5)*.01);g.add(m);pts.push(m)}
-const lg=new THREE.BufferGeometry();const lm=new THREE.LineSegments(lg,new THREE.LineBasicMaterial({color:0x6d7cff,transparent:true,opacity:.25}));g.add(lm);
-const core=new THREE.Mesh(new THREE.IcosahedronGeometry(3,1),new THREE.MeshBasicMaterial({color:0x22d3ee,wireframe:true,transparent:true,opacity:.35}));g.add(core);
-let mx=0,my=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
-let sy=0;addEventListener('scroll',()=>sy=scrollY/ (document.body.scrollHeight-innerHeight||1));
-function tick(t){requestAnimationFrame(tick);const a=[];
- pts.forEach(p=>{p.position.add(p.userData.v);['x','y','z'].forEach((k,i)=>{const L=[22,14,11][i];if(Math.abs(p.position[k])>L)p.userData.v[k]*=-1})});
- for(let i=0;i<N;i++)for(let j=i+1;j<N;j++){if(pts[i].position.distanceTo(pts[j].position)<7){a.push(...pts[i].position.toArray(),...pts[j].position.toArray())}}
- lg.setAttribute('position',new THREE.Float32BufferAttribute(a,3));
- core.rotation.x=t*.0003;core.rotation.y=t*.0005;core.scale.setScalar(1+Math.sin(t*.002)*.08);
- g.rotation.y+=(mx*1.2+sy*3-g.rotation.y)*.03;g.rotation.x+=(my*.6-g.rotation.x)*.03;core.position.y=-sy*14+2;
- r.render(sc,cam)}tick(0);
-
-// UI
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');const b=e.target.querySelector('[data-n]');if(b){const n=+b.dataset.n;let c=0;const id=setInterval(()=>{b.textContent=++c;if(c>=n)clearInterval(id)},120)}}}),{threshold:.3});
-document.querySelectorAll('.card').forEach(c=>io.observe(c));
-const D=await fetch('data/run.json').then(r=>r.json());
-const S=[['01','Intake','LangChain','Structured extraction','intake'],['02','Verify','CrewAI','Dedupe and rumour check','verification'],['03','Triage','CrewAI','P1 / P2 / P3 ranking','triage'],['04','Dispatch','CrewAI','Resource and safe first action','dispatch'],['05','Alert','CrewAI','Arabic + English SMS','communication']];
-const pipe=document.getElementById('pipe'),st=document.getElementById('stagetext');
-S.forEach((s,i)=>{if(i)pipe.insertAdjacentHTML('beforeend','<div class="arrow">➜</div>');const d=document.createElement('div');d.className='node';d.innerHTML=`<small>${s[0]} · ${s[2]}</small><h4>${s[1]}</h4><p>${s[3]}</p>`;
- d.onclick=()=>{document.querySelectorAll('.node').forEach(n=>n.classList.remove('on'));d.classList.add('on');st.textContent=s[4]=='intake'?JSON.stringify(D.incidents,null,1):D.stages[s[4]]};pipe.appendChild(d)});
-const inn=document.getElementById('in'),out=document.getElementById('out'),tabs=document.getElementById('tabs');
-const names={verification:'Verify',triage:'Triage',dispatch:'Dispatch',communication:'Alerts'};
-Object.entries(names).forEach(([k,v])=>{const b=document.createElement('button');b.textContent=v;b.onclick=()=>show(k);b.dataset.k=k;tabs.appendChild(b)});
-function show(k){tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k==k));out.textContent=D.stages[k]}
-const wait=ms=>new Promise(r=>setTimeout(r,ms));
-document.getElementById('go').onclick=async()=>{inn.innerHTML='';out.textContent='Intake: extracting incidents…';tabs.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
- for(const x of D.reports){inn.insertAdjacentHTML('beforeend',`<div class="rep ${/[\u0600-\u06FF]/.test(x.text)?'rtl':''}"><b>${x.id}</b> <span class="tag P3">${x.source}</span><br>${x.text}</div>`);await wait(450)}
- for(const k of Object.keys(names)){out.textContent='Agent working: '+names[k]+'…';await wait(900);show(k);await wait(1500)}};
-</script></body></html>
+<script type="module" src="assets/app.js"></script>
+</body></html>

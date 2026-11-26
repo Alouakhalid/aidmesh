@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verify agent | AidMesh</title>
+<meta name="description" content="The AidMesh Verification Analyst merges duplicate crisis reports and flags rumours before anyone acts on them.">
+<link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
+</head><body data-scene="verify">
+<canvas id="bg"></canvas>
+<nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
+<button id="burger">☰</button>
+<div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a class="here" href="verify.html">The crew</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
+<main>
+<section class="hero" style="min-height:62vh">
+<div class="kicker">AGENT 01 · CREWAI</div>
+<h1>🛡️ The Verification<br><span>Analyst</span></h1>
+<p class="lead">First in the crew. It reads every structured incident and answers one question: should anyone act on this? Duplicates merge. Rumours die here.</p>
+<div class="badges"><i>Role: Verification Analyst</i><i>Goal: trust before dispatch</i><i>CrewAI sequential process</i></div>
+</section>
+
+<section><h2><small>WHAT IT DOES</small>Three jobs, one pass</h2>
+<div class="feat"><div class="ic">🧬</div><div><h4>Deduplication across languages</h4><p>An Arabic call and an English tweet about the same trapped family become Merged Incident 1, with both sources attached. One rescue, not two.</p></div></div>
+<div class="feat"><div class="ic">⚖️</div><div><h4>Corroboration scoring</h4><p>Two independent reports earns VERIFIED. A single source stays honestly UNVERIFIED until help arrives from the field.</p></div></div>
+<div class="feat"><div class="ic">🧨</div><div><h4>Rumour detection</h4><p>Extreme casualty claims, no site details, no second source: the "dam collapsed, thousands dead" post gets labelled RUMOUR, the label that stops a panic deployment.</p></div></div></section>
+
+<section><h2><small>REAL OUTPUT</small>From the recorded demo run</h2>
+<p class="lead">Not mocked. This is the exact text the agent produced on Groq for the six Alexandria reports.</p>
+<div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>verify-agent · output.txt</span></div><pre class="term" id="out" data-stage="verification"></pre></div></section>
+
+<section><h2><small>WHY IT MATTERS</small>Wrong information costs lives</h2>
+<div class="grid">
+<div class="card"><h3>Before AidMesh</h3><p>Dispatchers copy-paste from WhatsApp groups, chase the same fire twice, and learn about the fake dam collapse from the panic it caused.</p></div>
+<div class="card"><h3>With Verify</h3><p>Every incident arrives with a trust label and its sources. Rumours are quarantined before they reach a single responder.</p></div></div>
+<div class="next"><a href="index.html"><small>← BACK</small><h4>Home</h4></a><a href="triage.html" style="text-align:right"><small>NEXT AGENT</small><h4>🎯 The Triage Lead →</h4></a></div></section>
+</main>
+<footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
+<script type="module" src="assets/app.js"></script>
+<script type="module">
+const el=document.getElementById('out');
+const d=await fetch('data/run.json').then(r=>r.json());
+const txt=d.stages[el.dataset.stage];
+let i=0;el.innerHTML='<span class="cursor"></span>';
+const id=setInterval(()=>{i+=6;if(i>=txt.length){el.textContent=txt;clearInterval(id)}else el.innerHTML=txt.slice(0,i).replace(/</g,'&lt;')+'<span class="cursor"></span>'},12);
+</script>
+</body></html>

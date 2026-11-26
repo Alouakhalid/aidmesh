@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dispatch agent | AidMesh</title>
+<meta name="description" content="The AidMesh Resource Dispatcher matches each incident to a resource and names the first safe action and its hazard.">
+<link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
+</head><body data-scene="dispatch">
+<canvas id="bg"></canvas>
+<nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
+<button id="burger">☰</button>
+<div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a class="here" href="verify.html">The crew</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
+<main>
+<section class="hero" style="min-height:62vh">
+<div class="kicker">AGENT 03 · CREWAI</div>
+<h1>🚁 The Resource<br><span>Dispatcher</span></h1>
+<p class="lead">Priority without a plan is just anxiety. The Dispatcher turns every ranked incident into a resource, a first safe action, and the hazard to check before anyone moves.</p>
+<div class="badges"><i>Role: Resource Dispatcher</i><i>Goal: a safe plan per incident</i><i>Output: resource + action + hazard</i></div>
+</section>
+
+<section><h2><small>WHAT IT DOES</small>Plans a responder can actually use</h2>
+<div class="feat"><div class="ic">🚤</div><div><h4>Resource matching</h4><p>Swift-water rescue with a paramedic for the trapped family. An electrical-hazard team with insulated gear for the live wire. A mobile generator crew for the dialysis clinic.</p></div></div>
+<div class="feat"><div class="ic">🦺</div><div><h4>First safe action, always</h4><p>Never "go". Always "isolate the live wire before any personnel enter the water". The first instruction is the one that keeps the rescuer alive.</p></div></div>
+<div class="feat"><div class="ic">⚠️</div><div><h4>Hazard callouts</h4><p>Current strength, conducting water, fuel flammability, unstable embankments. Every plan names what could kill the rescue.</p></div></div>
+<div class="feat"><div class="ic">🛰️</div><div><h4>Recon for rumours</h4><p>The unverified dam collapse gets a UAV survey, not boots. Confirm before you deploy.</p></div></div></section>
+
+<section><h2><small>REAL OUTPUT</small>From the recorded demo run</h2>
+<div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>dispatch-agent · output.txt</span></div><pre class="term" id="out" data-stage="dispatch"></pre></div></section>
+
+<section><h2><small>WHY IT MATTERS</small>Speed means nothing if the rescuer becomes the next victim</h2>
+<div class="grid">
+<div class="card"><h3>Before AidMesh</h3><p>"Send someone to the Corniche" is the whole plan. Nobody mentions the live wire until the crew is standing in the water.</p></div>
+<div class="card"><h3>With Dispatch</h3><p>Every assignment arrives with its own safety briefing. Responders move fast because the first step is already thought through.</p></div></div>
+<div class="next"><a href="triage.html"><small>← PREVIOUS AGENT</small><h4>🎯 Triage Lead</h4></a><a href="alert.html" style="text-align:right"><small>NEXT AGENT</small><h4>📣 Community Communicator →</h4></a></div></section>
+</main>
+<footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
+<script type="module" src="assets/app.js"></script>
+<script type="module">
+const el=document.getElementById('out');
+const d=await fetch('data/run.json').then(r=>r.json());
+const txt=d.stages[el.dataset.stage];
+let i=0;el.innerHTML='<span class="cursor"></span>';
+const id=setInterval(()=>{i+=6;if(i>=txt.length){el.textContent=txt;clearInterval(id)}else el.innerHTML=txt.slice(0,i).replace(/</g,'&lt;')+'<span class="cursor"></span>'},12);
+</script>
+</body></html>
