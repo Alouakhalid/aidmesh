@@ -110,3 +110,19 @@ def test_rate_limit_sets_retry_after(monkeypatch):
     client = TestClient(srv.app)
     last = [client.post("/api/run", json=BODY) for _ in range(srv.PER_IP_PER_HOUR + 1)][-1]
     assert last.status_code == 429 and last.headers["retry-after"] == "3600"
+
+
+def test_server_starts_without_loading_the_crew_framework():
+    import subprocess
+    import sys
+
+    code = "import sys, server.app; sys.exit(1 if 'crewai' in sys.modules else 0)"
+    assert subprocess.run([sys.executable, "-c", code], check=False).returncode == 0
+
+
+def test_crew_builds_with_four_agents_and_four_tasks(monkeypatch):
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    from aidmesh.crew import build_crew
+
+    crew = build_crew("{}", "[]")
+    assert len(crew.agents) == 4 and len(crew.tasks) == 4

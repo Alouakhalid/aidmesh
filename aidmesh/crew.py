@@ -1,13 +1,16 @@
 """Stage 2 (CrewAI): four specialist agents verify, rank, dispatch and communicate."""
-from crewai import Agent, Crew, Process, Task
-
 from .llm import crewai_llm
-from .tools import credibility_tool, geocode_tool, language_tool, nearest_tool, weather_tool
 
 FORMAT_RULES = "Be concise. Plain text. No markdown tables."
 
 
-def build_crew(incidents_json: str, reports_json: str = "[]") -> Crew:
+def build_crew(incidents_json: str, reports_json: str = "[]"):
+    """Build the four-agent sequential crew. CrewAI is imported here, not at module load, so the
+    web server starts fast and only pays the import cost when a crew actually runs."""
+    from crewai import Agent, Crew, Process, Task
+
+    from .tools import credibility_tool, geocode_tool, language_tool, nearest_tool, weather_tool
+
     llm = crewai_llm()
 
     verifier = Agent(
