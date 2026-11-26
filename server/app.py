@@ -82,3 +82,12 @@ def job(job_id: str):
     if not j:
         raise HTTPException(404, "Unknown job")
     return {k: v for k, v in j.items() if k != "t"}
+
+
+# Serve the static site (docs/) from the same origin, so the API host is also the website.
+# Mounted last so /api/* routes win.
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+_SITE = Path(__file__).resolve().parent.parent / "docs"
+if _SITE.is_dir():
+    app.mount("/", StaticFiles(directory=str(_SITE), html=True), name="site")
