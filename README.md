@@ -96,7 +96,7 @@ curl -X POST localhost:8000/api/run -H 'content-type: application/json' \
 ## Tests
 
 ```bash
-pip install pytest && pytest -q      # 18 tests, no network and no API key needed
+pip install pytest && pytest -q      # 19 tests, no network and no API key needed
 ```
 
 They cover language detection, haversine distance, credibility scoring on a rumour versus a specific call, nearest-resource sorting and filtering, geocoding and weather parsing with mocked HTTP and graceful failure, the CrewAI tool wrappers, API input validation, per-IP rate limiting, CORS, and the shape of the recorded run.

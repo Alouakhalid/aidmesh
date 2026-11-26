@@ -1,6 +1,6 @@
 """Tiny FastAPI server so the static site can run the real crew live.
 The Groq key lives only in the host's GROQ_API_KEY secret. Never in the repo or the browser."""
-import os, time, threading, collections
+import os, time, threading, collections, uuid
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -11,7 +11,7 @@ from aidmesh.pipeline import run_pipeline
 ORIGINS = os.getenv("ALLOWED_ORIGINS", "https://alouakhalid.github.io").split(",")
 PER_IP_PER_HOUR = int(os.getenv("PER_IP_PER_HOUR", "4"))
 GLOBAL_PER_DAY = int(os.getenv("GLOBAL_PER_DAY", "150"))
-MAX_REPORTS, MAX_CHARS = 8, 400
+MAX_REPORTS, MAX_CHARS = 6, 400
 
 app = FastAPI(title="AidMesh API")
 app.add_middleware(CORSMiddleware, allow_origins=ORIGINS, allow_methods=["POST", "GET"], allow_headers=["*"])
@@ -46,17 +46,39 @@ def health():
     return {"ok": True, "key_configured": bool(os.getenv("GROQ_API_KEY"))}
 
 
+_jobs = {}
+
+
+def _worker(job_id, reports):
+    """Runs in a thread. Jobs let the client poll, because a full run can exceed a proxy's request timeout."""
+    try:
+        with _lock:
+            _jobs[job_id]["status"] = "running"
+            _jobs[job_id]["result"] = run_pipeline(reports)
+            _jobs[job_id]["status"] = "done"
+    except SystemExit as e:
+        _jobs[job_id].update(status="error", error=str(e))
+    except Exception as e:
+        _jobs[job_id].update(status="error", error="Crew run failed: " + type(e).__name__)
+
+
 @app.post("/api/run")
 def run(req: RunRequest, request: Request):
     ip = (request.headers.get("x-forwarded-for") or request.client.host).split(",")[0].strip()
     _limit(ip)
-    if not _lock.acquire(timeout=60):
+    if sum(1 for j in _jobs.values() if j["status"] in ("queued", "running")) >= 3:
         raise HTTPException(503, "Crew is busy, try again in a minute.")
-    try:
-        return run_pipeline([r.model_dump() for r in req.reports])
-    except SystemExit as e:
-        raise HTTPException(500, str(e))
-    except Exception as e:
-        raise HTTPException(502, "Crew run failed: " + type(e).__name__)
-    finally:
-        _lock.release()
+    for k in [k for k, j in _jobs.items() if time.time() - j["t"] > 1800]:
+        _jobs.pop(k, None)
+    job_id = uuid.uuid4().hex[:12]
+    _jobs[job_id] = {"status": "queued", "t": time.time()}
+    threading.Thread(target=_worker, args=(job_id, [r.model_dump() for r in req.reports]), daemon=True).start()
+    return {"job_id": job_id, "status": "queued"}
+
+
+@app.get("/api/job/{job_id}")
+def job(job_id: str):
+    j = _jobs.get(job_id)
+    if not j:
+        raise HTTPException(404, "Unknown job")
+    return {k: v for k, v in j.items() if k != "t"}
