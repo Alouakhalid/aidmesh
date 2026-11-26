@@ -1,0 +1,5 @@
+crewai>=0.100
+langchain-core>=0.3
+langchain-groq>=0.2
+pydantic>=2
+litellm>=1.50
