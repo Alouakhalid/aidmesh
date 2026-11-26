@@ -1,0 +1,10 @@
+[
+ {"name":"Alexandria Main University Hospital","kind":"hospital","lat":31.2087,"lon":29.9097,"note":"sample registry entry"},
+ {"name":"Gamal Abdel Nasser Hospital","kind":"hospital","lat":31.2330,"lon":29.9460,"note":"sample registry entry"},
+ {"name":"Sidi Gaber Dialysis Center (sample)","kind":"dialysis","lat":31.2190,"lon":29.9410,"note":"sample registry entry"},
+ {"name":"Montaza Civil Defence Station (sample)","kind":"rescue","lat":31.2880,"lon":30.0160,"note":"sample registry entry"},
+ {"name":"Manshiya Civil Defence Boat Unit (sample)","kind":"rescue","lat":31.1990,"lon":29.8890,"note":"sample registry entry"},
+ {"name":"Agami School Shelter (sample)","kind":"shelter","lat":31.1070,"lon":29.7770,"note":"sample registry entry"},
+ {"name":"Electricity Emergency Unit - Smouha (sample)","kind":"electric","lat":31.2150,"lon":29.9440,"note":"sample registry entry"},
+ {"name":"Water Tanker Depot - Moharam Bek (sample)","kind":"water","lat":31.1930,"lon":29.9060,"note":"sample registry entry"}
+]

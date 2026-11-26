@@ -1,96 +1,106 @@
 {
-  "reports": [
-    {
-      "id": "R1",
-      "text": "سيول في حي المنشية، المياه وصلت لمتر ونص وفيه عيلة محبوسة في الدور الثاني ومعاهم كبير سن بيتنفس بصعوبة. 01000000001",
-      "source": "call"
-    },
-    {
-      "id": "R2",
-      "text": "Flash flood at Manshiya district, water about 1.5m, a family stuck on 2nd floor, elderly person struggling to breathe.",
-      "source": "social"
-    },
-    {
-      "id": "R3",
-      "text": "Need drinking water and baby formula at Agami shelter school, about 120 people, since yesterday.",
-      "source": "sms"
-    },
-    {
-      "id": "R4",
-      "text": "Road blocked by fallen electricity pole on Corniche near Stanley bridge. Live wire in water. Nobody hurt yet.",
-      "source": "social"
-    },
-    {
-      "id": "R5",
-      "text": "BREAKING!!! dam collapsed in Alexandria, thousands dead, share now!!!",
-      "source": "social"
-    },
-    {
-      "id": "R6",
-      "text": "Clinic in Sidi Gaber lost power, 6 dialysis patients waiting, generator fuel ends in 3 hours.",
-      "source": "call"
-    }
-  ],
-  "incidents": [
-    {
-      "report_id": "R1",
-      "language": "ar",
-      "need": "rescue",
-      "location": "Manshiya district",
-      "people_affected": null,
-      "life_threatening": true,
-      "summary": "A flood in Manshiya district has trapped a family on the second floor, with an elderly person having difficulty breathing."
-    },
-    {
-      "report_id": "R2",
-      "language": "en",
-      "need": "rescue",
-      "location": "Manshiya district",
-      "people_affected": null,
-      "life_threatening": true,
-      "summary": "A flash flood in Manshiya district has trapped a family on the second floor, with an elderly person struggling to breathe."
-    },
-    {
-      "report_id": "R3",
-      "language": "en",
-      "need": "water_food",
-      "location": "Agami shelter school",
-      "people_affected": 120,
-      "life_threatening": false,
-      "summary": "A request for drinking water and baby formula for approximately 120 people at the Agami shelter school."
-    },
-    {
-      "report_id": "R4",
-      "language": "en",
-      "need": "hazard",
-      "location": "Corniche near Stanley Bridge",
-      "people_affected": null,
-      "life_threatening": true,
-      "summary": "A fallen electricity pole has blocked the road on the Corniche near Stanley Bridge, with a live wire in the water."
-    },
-    {
-      "report_id": "R5",
-      "language": "en",
-      "need": "hazard",
-      "location": "Alexandria",
-      "people_affected": null,
-      "life_threatening": true,
-      "summary": "A reported dam collapse in Alexandria with claims of thousands of deaths."
-    },
-    {
-      "report_id": "R6",
-      "language": "en",
-      "need": "medical",
-      "location": "Sidi Gaber clinic",
-      "people_affected": 6,
-      "life_threatening": true,
-      "summary": "The clinic in Sidi Gaber has lost power, leaving six dialysis patients waiting as generator fuel will run out in three hours."
-    }
-  ],
-  "stages": {
-    "verification": "Merged Incident 1 (R1 + R2)  \nNeed: rescue  \nLocation: Manshiya district  \nLife‑threatening: true  \nSummary: A flood in Manshiya district has trapped a family on the second floor, with an elderly person having difficulty breathing.  \nVerification: VERIFIED – corroborated by two independent reports (Arabic and English) describing the same situation.\n\nMerged Incident 2 (R3)  \nNeed: water_food  \nLocation: Agami shelter school  \nPeople affected: 120  \nLife‑threatening: false  \nSummary: Request for drinking water and baby formula for approximately 120 people at the Agami shelter school.  \nVerification: UNVERIFIED – single report, no external confirmation yet.\n\nMerged Incident 3 (R4)  \nNeed: hazard  \nLocation: Corniche near Stanley Bridge  \nLife‑threatening: true  \nSummary: A fallen electricity pole has blocked the road on the Corniche near Stanley Bridge, with a live wire in the water.  \nVerification: UNVERIFIED – only one source; needs on‑site confirmation.\n\nMerged Incident 4 (R5)  \nNeed: hazard  \nLocation: Alexandria (city‑wide)  \nLife‑threatening: true  \nSummary: Reported dam collapse in Alexandria with claims of thousands of deaths.  \nVerification: RUMOUR – extreme casualty claim, no specific site details and no second source to substantiate.\n\nMerged Incident 5 (R6)  \nNeed: medical  \nLocation: Sidi Gaber clinic  \nPeople affected: 6  \nLife‑threatening: true  \nSummary: The clinic in Sidi Gaber has lost power, leaving six dialysis patients waiting as generator fuel will run out in three hours.  \nVerification: UNVERIFIED – single report; requires confirmation from health authorities or the clinic.",
-    "triage": "P1 – Incident 1: Verified flood trapping a family; elderly person struggling to breathe requires immediate rescue.  \nP1 – Incident 3: Fallen electricity pole with live wire in water creates instant electrocution danger to anyone nearby.  \nP2 – Incident 5: Six dialysis patients at Sidi Gaber clinic will lose power in ~3 hours, threatening lives if fuel isn’t restored.  \nP3 – Incident 2: 120 people at Agami shelter need water and baby formula; urgent but not immediately life‑threatening.  \nP3 – Incident 4: Rumored dam collapse with no verification; no confirmed casualties, thus lowest priority.",
-    "dispatch": "1. Incident 1 – Resource: Swift‑water rescue unit with EMT/paramedic.  \n   First safe action: Secure a stable entry point, deploy a rescue boat or rope system, and evacuate the breathing‑distressed elder to shore for immediate medical care.  \n   Hazard to check: Flood‑water current strength and potential building collapse or hidden debris.\n\n2. Incident 3 – Resource: Electrical‑hazard response team with insulated rescue gear and de‑energizing equipment.  \n   First safe action: Isolate the live wire (turn off upstream breaker or use insulated cutters) before any personnel enter the water.  \n   Hazard to check: Presence of standing water conducting electricity and possible secondary pole collapse.\n\n3. Incident 5 – Resource: Mobile generator crew with fuel supply and biomedical support staff.  \n   First safe action: Position the generator at a safe distance, connect it to the clinic’s power system, and begin continuous monitoring of dialysis machines.  \n   Hazard to check: Fuel spill/flammability risk and generator exhaust ventilation.\n\n4. Incident 2 – Resource: Water‑distribution team with tanker trucks, bottled water, and infant‑formula kits.  \n   First safe action: Set up a safe distribution point away from shelter entrances, verify water quality, and begin immediate hand‑out to the 120 occupants.  \n   Hazard to check: Contaminated water sources and crowd‑control safety (trip hazards, slip risk).\n\n5. Incident 4 – Resource: Reconnaissance team with UAV/ground survey assets.  \n   First safe action: Conduct remote visual inspection of the dam to confirm structural status before any ground deployment.  \n   Hazard to check: Unstable dam embankment or sudden release of water if collapse is imminent.",
-    "communication": "إنقاذ عاجل في منشيّة: عائلة محاصرة بالطابق الثاني، مسن يعاني صعوبة تنفس. تأكد من سلامة الدخول، استخدم قارب أو حبل لإخلائه فوراً.  \nUrgent: Live wire in water at Corniche near Stanley Bridge. Isolate power, keep distance, avoid water entry until secured.  \nتنبيه: لا صحة لتقارير انهيار السد في الإسكندرية أو خسائر بالآلاف. لا توجد معلومات مؤكدة، يرجى عدم الذعر وانتظار التعليمات الرسمية.  \nNotice: Reports of an Alexandria dam collapse and thousands of deaths are unverified. No confirmed damage; stay calm and await official updates."
+ "reports": [
+  {
+   "id": "R1",
+   "text": "سيول في حي المنشية، المياه وصلت لمتر ونص وفيه عيلة محبوسة في الدور الثاني ومعاهم كبير سن بيتنفس بصعوبة. 01000000001",
+   "source": "call"
+  },
+  {
+   "id": "R2",
+   "text": "Flash flood at Manshiya district, water about 1.5m, a family stuck on 2nd floor, elderly person struggling to breathe.",
+   "source": "social"
+  },
+  {
+   "id": "R3",
+   "text": "Need drinking water and baby formula at Agami shelter school, about 120 people, since yesterday.",
+   "source": "sms"
+  },
+  {
+   "id": "R4",
+   "text": "Road blocked by fallen electricity pole on Corniche near Stanley bridge. Live wire in water. Nobody hurt yet.",
+   "source": "social"
+  },
+  {
+   "id": "R5",
+   "text": "BREAKING!!! dam collapsed in Alexandria, thousands dead, share now!!!",
+   "source": "social"
+  },
+  {
+   "id": "R6",
+   "text": "Clinic in Sidi Gaber lost power, 6 dialysis patients waiting, generator fuel ends in 3 hours.",
+   "source": "call"
   }
+ ],
+ "incidents": [
+  {
+   "report_id": "R1",
+   "language": "ar",
+   "need": "rescue",
+   "location": "Manshiya district",
+   "people_affected": null,
+   "life_threatening": true,
+   "summary": "A flood in Manshiya district has trapped a family on the second floor, with an elderly person having difficulty breathing."
+  },
+  {
+   "report_id": "R2",
+   "language": "en",
+   "need": "rescue",
+   "location": "Manshiya district",
+   "people_affected": null,
+   "life_threatening": true,
+   "summary": "A flash flood in Manshiya district has trapped a family on the second floor, with an elderly person struggling to breathe."
+  },
+  {
+   "report_id": "R3",
+   "language": "en",
+   "need": "water_food",
+   "location": "Agami shelter school",
+   "people_affected": 120,
+   "life_threatening": false,
+   "summary": "A request for drinking water and baby formula for approximately 120 people at the Agami shelter school."
+  },
+  {
+   "report_id": "R4",
+   "language": "en",
+   "need": "hazard",
+   "location": "Corniche near Stanley Bridge",
+   "people_affected": null,
+   "life_threatening": true,
+   "summary": "A fallen electricity pole has blocked the road on the Corniche near Stanley Bridge, with a live wire in the water."
+  },
+  {
+   "report_id": "R5",
+   "language": "en",
+   "need": "hazard",
+   "location": "Alexandria",
+   "people_affected": null,
+   "life_threatening": true,
+   "summary": "A reported dam collapse in Alexandria with claims of thousands of deaths."
+  },
+  {
+   "report_id": "R6",
+   "language": "en",
+   "need": "medical",
+   "location": "Sidi Gaber clinic",
+   "people_affected": 6,
+   "life_threatening": true,
+   "summary": "The clinic in Sidi Gaber has lost power, leaving six dialysis patients waiting as generator fuel will run out in three hours."
+  }
+ ],
+ "stages": {
+  "verification": "Manshiya district – rescue (family trapped on 2nd floor, elderly having difficulty breathing) – VERIFIED: two independent reports (call and social) give matching details.  \nAgami shelter school – water / baby‑formula for ~120 people – VERIFIED: specific request with numbers from a direct SMS source.  \nCorniche near Stanley Bridge – hazard (fallen electricity pole, live wire in water) – UNVERIFIED: only a single social‑media post; needs confirmation.  \nAlexandria – dam‑collapse claim (thousands dead) – RUMOUR: extreme death toll, vague location, no corroborating source.  \nSidi Gaber clinic – medical (power loss affecting 6 dialysis patients, generator fuel runs out in 3 h) – VERIFIED: direct call report with precise figures.",
+  "triage": "P1 – Manshiya district – family trapped on 2nd floor with an elderly person struggling to breathe (immediate life‑threatening).  \nP2 – Sidi Gaber clinic – power loss endangers 6 dialysis patients; generator fuel will run out in ~3 hours.  \nP3 – Agami shelter school – ~120 people need water and baby‑formula (essential but not an immediate threat).",
+  "dispatch": "P1 – Manshiya district – nearest rescue: Montaza Civil Defence Station, 4.5 km – First safe action: Deploy a rapid‑response rescue team with a stretcher and oxygen kit; assess structural stability before entry. Hazard to check: building collapse risk.\n\nP2 – Sidi Gaber clinic – nearest electric: Electricity Emergency Unit – Smouha, 1.2 km – First safe action: Send a generator‑fuel resupply crew with backup power cables; verify safe electrical isolation before connecting. Hazard to check: potential fuel spill or electrocution.\n\nP3 – Agami shelter school – nearest water: Water Tanker Depot – Moharam Bek, 12.9 km – First safe action: Dispatch water tankers with bottled water and baby‑formula; set up a clean‑water distribution point away from any flood‑prone zones. Hazard to check: sand‑storm dust affecting water quality.",
+  "communication": "إلى فرق الإنقاذ: عائلة محاصرة بالمنشية، خطر انهيار. أرسلوا فريقًا سريعًا مع نقالة وأكسجين. سيدي جابر: عطل كهربائي، 6 مرضى غسيل. وفروا مولد ووقود فورًا.\n\nRescue: Family trapped Manshiya, collapse risk – send rapid team, stretcher & O2. Sidi Gaber clinic: power out, 6 dialysis pts – deliver generator & fuel now.\n\nشائعة: انهيار سد بالإسكندرية وموت آلاف شخص غير صحيحة. لا توجد تقارير مؤكدة. تابعوا المصادر الرسمية فقط.\n\nRumor: Alexandria dam collapse with thousands dead is false. No such incident confirmed. Stay tuned to official sources."
+ },
+ "meta": {
+  "seconds": 106.0,
+  "tool_calls": {
+   "weather_flood_risk": 1,
+   "credibility_score": 5,
+   "nearest_resources": 3,
+   "geocode_place": 5
+  },
+  "model": "openai/gpt-oss-120b"
+ }
 }
