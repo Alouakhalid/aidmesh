@@ -117,7 +117,7 @@ curl -X POST https://aidmesh-production.up.railway.app/api/run -H 'content-type:
 
 ## Engineering notes
 
-- **Efficiency:** geocoding and weather lookups are cached for 10 minutes, the resource registry is read once, regexes are compiled once, responses are gzip-compressed, static files get a short cache, and one crew run executes at a time with a bounded job queue.
+- **Efficiency:** geocoding and weather lookups are cached for 10 minutes, the resource registry is read once, regexes are compiled once, responses are gzip-compressed, CrewAI and LangChain load only when a crew runs (server import about 0.2 s instead of 2 s), static files get a short cache, and one crew run executes at a time with a bounded job queue.
 - **Security:** the Groq key lives only in a host secret. Inputs are length-limited, control characters are stripped, ids and sources are validated, requests are rate limited per visitor and per day (with `Retry-After`), API responses are never cached, and security headers are set. Failed runs report only the error type.
 - **Quality:** small modules (`limits.py`, `jobs.py`, `tools_core.py`), tool logic in plain testable functions, ruff lint and pytest with coverage in CI.
 
@@ -141,7 +141,9 @@ aidmesh/
   llm.py          Groq wiring for both frameworks
   schemas.py      Pydantic incident schema
   cli.py          command line entry
-server/app.py     FastAPI backend with rate limiting
+server/app.py     FastAPI backend: validation, headers, serves docs/
+server/limits.py  thread-safe sliding-window rate limiter
+server/jobs.py    bounded in-memory job store for polling
 data/             sample reports and sample resource registry
 docs/             multi-page 3D website (GitHub Pages) and recorded run
 tests/            pytest suite
