@@ -29,9 +29,9 @@ if(CFG.note)toolRows.push(`<li>${esc(CFG.note)}</li>`);
 if(!CFG.tools.length&&!CFG.note)toolRows.push('<li>—</li>');
 const outLines=D.stages[key].split('\n').filter(Boolean).slice(0,4).map(l=>esc(l.slice(0,120))+(l.length>120?'…':'')).join('\n');
 el.innerHTML=`<div class="con-h"><span class="led" aria-hidden="true"></span><b>${CFG.name}</b><span class="con-st">STATUS: COMPLETED</span><span class="chip">RECORDED RUN</span></div>
-<div class="con-g"><div class="con-c"><h5>▸ INPUT</h5><ul>${inRows.join('')}</ul></div>
-<div class="con-c"><h5>▸ TOOL CALLS</h5><ul>${toolRows.join('')}</ul></div>
-<div class="con-c"><h5>▸ OUTPUT (EXCERPT)</h5><div class="con-out">${outLines}<span class="cursor" style="display:inline-block;width:7px;height:13px;background:var(--sig);vertical-align:-2px"></span></div></div></div>
+<div class="con-g"><div class="con-c"><h5 role="heading" aria-level="3">▸ INPUT</h5><ul>${inRows.join('')}</ul></div>
+<div class="con-c"><h5 role="heading" aria-level="3">▸ TOOL CALLS</h5><ul>${toolRows.join('')}</ul></div>
+<div class="con-c"><h5 role="heading" aria-level="3">▸ OUTPUT (EXCERPT)</h5><div class="con-out">${outLines}<span class="cursor" style="display:inline-block;width:7px;height:13px;background:var(--sig);vertical-align:-2px"></span></div></div></div>
 <div class="con-f">RECORDED REAL RUN · MODEL ${esc(D.meta.model)} · ${D.meta.seconds}S END TO END · FULL REPLAY ON <a href="demo.html">LIVE REPLAY</a></div>`;
 el.querySelectorAll('li,.con-out,.con-h').forEach((n,i)=>{n.classList.add('st');n.style.animationDelay=(i*0.14)+'s'});
 })();
