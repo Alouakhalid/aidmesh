@@ -11,25 +11,24 @@
 </head><body data-scene="tools">
 <a class="skip" href="#main">Skip to content</a>
 <canvas id="bg" aria-hidden="true"></canvas>
-<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <nav aria-label="Primary"><b><img src="assets/logo.svg" alt="">AidMesh</b>
 <button id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">☰</button>
 <div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a href="verify.html">The crew</a><a class="here" href="tools.html">Toolbox</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
 <main id="main">
 <section class="hero" style="min-height:62vh">
 <div class="kicker">AGENT TOOLS</div>
-<h1>Agents that only talk<br><span>are chatbots. These act.</span></h1>
-<p class="lead">Every agent in the crew calls real tools: scoring functions, live map and weather APIs, a resource registry. The LLM decides. The tools know.</p>
+<h1>Agents that only talk<br><span class="ol">are chatbots. These act.</span></h1>
+<p class="lead blur-in">Every agent in the crew calls real tools: scoring functions, live map and weather APIs, a resource registry. The LLM decides. The tools know.</p>
 <div class="badges"><i>5 tools</i><i>14 tool calls in the recorded run</i><i>openai/gpt-oss-120b on Groq</i></div>
 </section>
 
 <section><h2><small>THE FIVE TOOLS</small>What the crew can actually do</h2>
 <div class="grid">
-<div class="card"><h3>🧪 credibility_score</h3><p>A rule-based 0 to 100 rumour score with its reasons in plain language: extreme casualty claims, vague locations, missing corroboration all cost points. Called by the <b>Verifier</b>.</p><span class="tag P3">rule-based</span><span class="tag V">explainable</span></div>
-<div class="card"><h3>🌐 detect_language</h3><p>Tells Arabic from English from mixed, so a bilingual report stream is routed and counted correctly. Called by the <b>Verifier</b>.</p><span class="tag P3">ar / en / mixed</span></div>
-<div class="card"><h3>📍 geocode_place</h3><p>Turns "Sidi Gaber clinic" into real coordinates through OpenStreetMap Nominatim. Called by <b>Triage</b> and <b>Dispatch</b>.</p><span class="tag P3">OpenStreetMap</span></div>
-<div class="card"><h3>🌧️ weather_flood_risk</h3><p>Next-24h rain and river-discharge trend from Open-Meteo, so triage knows whether the water is still rising. Called by <b>Triage</b> and <b>Dispatch</b>.</p><span class="tag P3">Open-Meteo</span></div>
-<div class="card"><h3>🚑 nearest_resources</h3><p>Nearest hospital, dialysis, rescue, shelter, electric or water unit by distance. Called by <b>Dispatch</b>.</p><span class="tag U">sample registry: 8 Alexandria entries</span></div></div>
+<div class="card"><h3><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v5l-5 9.5A2.6 2.6 0 0 0 7.3 22h9.4a2.6 2.6 0 0 0 2.3-4.5L14 8V3"/><path d="M8 15h8"/></svg> credibility_score</h3><p>A rule-based 0 to 100 rumour score with its reasons in plain language: extreme casualty claims, vague locations, missing corroboration all cost points. Called by the <b>Verifier</b>.</p><span class="tag P3">rule-based</span><span class="tag V">explainable</span></div>
+<div class="card"><h3><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/></svg> detect_language</h3><p>Tells Arabic from English from mixed, so a bilingual report stream is routed and counted correctly. Called by the <b>Verifier</b>.</p><span class="tag P3">ar / en / mixed</span></div>
+<div class="card"><h3><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> geocode_place</h3><p>Turns "Sidi Gaber clinic" into real coordinates through OpenStreetMap Nominatim. Called by <b>Triage</b> and <b>Dispatch</b>.</p><span class="tag P3">OpenStreetMap</span></div>
+<div class="card"><h3><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 15a5 5 0 1 1 1.5-9.8A6 6 0 0 1 20 8a4 4 0 0 1-1 7.9"/><path d="M8 18l-1 2.5M12 18l-1 2.5M16 18l-1 2.5"/></svg> weather_flood_risk</h3><p>Next-24h rain and river-discharge trend from Open-Meteo, so triage knows whether the water is still rising. Called by <b>Triage</b> and <b>Dispatch</b>.</p><span class="tag P3">Open-Meteo</span></div>
+<div class="card"><h3><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> nearest_resources</h3><p>Nearest hospital, dialysis, rescue, shelter, electric or water unit by distance. Called by <b>Dispatch</b>.</p><span class="tag U">sample registry: 8 Alexandria entries</span></div></div>
 <p class="note">Honesty label: the resource registry is sample data (8 entries for Alexandria) standing in for a real civil-defence registry. Geocoding and weather are live public APIs.</p></section>
 
 <section><h2><small>PROOF</small>Tool calls in the recorded run</h2>
@@ -42,7 +41,7 @@
 <section><h2><small>TOOLS IN ACTION</small>What Dispatch produced with them</h2>
 <p class="lead">Real output from the recorded run. Notice the named stations and distances: those come from geocode_place and nearest_resources, not from the model's imagination.</p>
 <div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>dispatch-agent · with tools</span></div><pre class="term" id="out"></pre></div>
-<div class="next"><a href="verify.html"><small>← BACK</small><h4>🛡️ The crew</h4></a><a href="demo.html" style="text-align:right"><small>SEE THE FULL RUN</small><h4>▶ Live replay →</h4></a></div></section>
+<div class="next"><a href="verify.html"><small>← BACK</small><h4><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/></svg> The crew</h4></a><a href="demo.html" style="text-align:right"><small>SEE THE FULL RUN</small><h4>▶ Live replay →</h4></a></div></section>
 </main>
 <footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
 <script type="module" src="assets/app.js"></script>

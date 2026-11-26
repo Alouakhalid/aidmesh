@@ -11,7 +11,6 @@
 </head><body data-scene="dispatch">
 <a class="skip" href="#main">Skip to content</a>
 <canvas id="bg" aria-hidden="true"></canvas>
-<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <nav aria-label="Primary"><b><img src="assets/logo.svg" alt="">AidMesh</b>
 <button id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">☰</button>
 <div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a class="here" href="verify.html">The crew</a><a href="tools.html">Toolbox</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
@@ -19,16 +18,20 @@
 <section class="hero" style="min-height:62vh">
 <div class="wm-num" aria-hidden="true">03</div>
 <div class="kicker">AGENT 03 · CREWAI</div>
-<h1>🚁 The Resource<br><span>Dispatcher</span></h1>
-<p class="lead">Priority without a plan is just anxiety. The Dispatcher turns every ranked incident into a resource, a first safe action, and the hazard to check before anyone moves.</p>
+<h1><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> The Resource<br><span class="ol">Dispatcher</span></h1>
+<p class="lead blur-in">Priority without a plan is just anxiety. The Dispatcher turns every ranked incident into a resource, a first safe action, and the hazard to check before anyone moves.</p>
 <div class="badges"><i>Role: Resource Dispatcher</i><i>Goal: a safe plan per incident</i><i>Tools: geocode_place · nearest_resources · weather_flood_risk</i></div>
 </section>
 
+<section><h2><small>AGENT CONSOLE</small>Status, tools and output</h2>
+<div class="console hud" data-agent="dispatch"></div>
+<noscript><p class="note">Enable JavaScript to see the agent console; the recorded output further down shows the same run.</p></noscript></section>
+
 <section><h2><small>WHAT IT DOES</small>Plans a responder can actually use</h2>
-<div class="feat"><div class="ic">🚤</div><div><h4>Named resources, real distances</h4><p>nearest_resources + geocode_place turn "send help" into "Montaza Civil Defence Station, 4.5 km" for the trapped family and "Electricity Emergency Unit - Smouha, 1.2 km" for the dialysis clinic.</p></div></div>
-<div class="feat"><div class="ic">🦺</div><div><h4>First safe action, always</h4><p>Never "go". Always "isolate the live wire before any personnel enter the water". The first instruction is the one that keeps the rescuer alive.</p></div></div>
-<div class="feat"><div class="ic">⚠️</div><div><h4>Hazard callouts</h4><p>Current strength, conducting water, fuel flammability, unstable embankments. Every plan names what could kill the rescue.</p></div></div>
-<div class="feat"><div class="ic">🗂️</div><div><h4>Registry, not imagination</h4><p>Distances come from a resource registry (a sample of 8 Alexandria entries in this demo), never from the model making up a station. Swap in a real civil-defence registry and the same crew works anywhere.</p></div></div></section>
+<div class="feat"><div class="ic"><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l2 3h14l2-3M5 17l7-12 7 12M12 5v12"/></svg></div><div><h4>Named resources, real distances</h4><p>nearest_resources + geocode_place turn "send help" into "Montaza Civil Defence Station, 4.5 km" for the trapped family and "Electricity Emergency Unit - Smouha, 1.2 km" for the dialysis clinic.</p></div></div>
+<div class="feat"><div class="ic"><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M6 6l3.5 3.5M18 6l-3.5 3.5M6 18l3.5-3.5M18 18l-3.5-3.5"/></svg></div><div><h4>First safe action, always</h4><p>Never "go". Always "isolate the live wire before any personnel enter the water". The first instruction is the one that keeps the rescuer alive.</p></div></div>
+<div class="feat"><div class="ic"><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3L22 20H2L12 3z"/><path d="M12 10v4M12 17.5v.5"/></svg></div><div><h4>Hazard callouts</h4><p>Current strength, conducting water, fuel flammability, unstable embankments. Every plan names what could kill the rescue.</p></div></div>
+<div class="feat"><div class="ic"><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h6l2 2h10v10H3V7z"/></svg></div><div><h4>Registry, not imagination</h4><p>Distances come from a resource registry (a sample of 8 Alexandria entries in this demo), never from the model making up a station. Swap in a real civil-defence registry and the same crew works anywhere.</p></div></div></section>
 
 <section><h2><small>REAL OUTPUT</small>From the recorded demo run</h2>
 <div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>dispatch-agent · output.txt</span></div><pre class="term" id="out" data-stage="dispatch"></pre></div></section>
@@ -37,10 +40,10 @@
 <div class="grid">
 <div class="card"><h3>Before AidMesh</h3><p>"Send someone to the Corniche" is the whole plan. Nobody mentions the live wire until the crew is standing in the water.</p></div>
 <div class="card"><h3>With Dispatch</h3><p>Every assignment arrives with its own safety briefing. Responders move fast because the first step is already thought through.</p></div></div>
-<div class="next"><a href="triage.html"><small>← PREVIOUS AGENT</small><h4>🎯 Triage Lead</h4></a><a href="alert.html" style="text-align:right"><small>NEXT AGENT</small><h4>📣 Community Communicator →</h4></a></div></section>
+<div class="next"><a href="triage.html"><small>← PREVIOUS AGENT</small><h4><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg> Triage Lead</h4></a><a href="alert.html" style="text-align:right"><small>NEXT AGENT</small><h4><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L7 9H3v6h4l14 5V4z"/><path d="M7 15v4h3v-4.6"/></svg> Community Communicator →</h4></a></div></section>
 </main>
 <footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
-<script type="module" src="assets/app.js"></script>
+<script type="module" src="assets/app.js"></script><script src="assets/console.js" defer></script>
 <script type="module">
 const el=document.getElementById('out');
 const d=await fetch('data/run.json').then(r=>r.json());

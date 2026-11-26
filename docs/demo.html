@@ -11,43 +11,102 @@
 </head><body data-scene="demo">
 <a class="skip" href="#main">Skip to content</a>
 <canvas id="bg" aria-hidden="true"></canvas>
-<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <nav aria-label="Primary"><b><img src="assets/logo.svg" alt="">AidMesh</b>
 <button id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">☰</button>
 <div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a href="verify.html">The crew</a><a href="tools.html">Toolbox</a><a class="here" href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
 <main id="main">
 <section class="hero" style="min-height:56vh">
 <div class="kicker">LIVE REPLAY</div>
-<h1>Watch the crew<br><span>work a real night.</span></h1>
-<p class="lead">This is a recorded real run of the Python crew (LangChain intake, then four CrewAI agents on Groq) over six Alexandria flood reports. Press run to replay it stage by stage. Nothing here is mocked.</p>
+<h1>Watch the crew<br><span class="ol">work a real night.</span></h1>
+<p class="lead blur-in">This is a recorded real run of the Python crew (LangChain intake, then four CrewAI agents on Groq) over six Alexandria flood reports. Press run to replay it stage by stage. Nothing here is mocked.</p>
 </section>
 
 <section><h2><small>THE RUN</small>Six reports in, one plan out</h2>
-<button class="run" id="go">▶ Run the crew</button><p class="lead" id="meta" style="font-size:15px;margin-top:10px"></p>
+<div class="runrow"><button class="run" id="go">▶ Run the crew</button><span class="chip" id="mode">MODE: RECORDED RUN</span></div>
+<p class="lead" id="meta" style="font-size:15px;margin-top:10px"></p>
 <div class="demo">
 <div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>incoming · reports.json</span></div><div id="in"></div></div>
 <div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>crew · stdout</span></div><div class="tabs" id="tabs" role="tablist" aria-label="Crew stages"></div><pre class="term" id="out">Waiting for run…</pre></div>
 </div>
-<p class="note">Honesty label: this replay reads the recorded output of a real tool-enabled run (docs/data/run.json in the repo, ~106 seconds on Groq). The resource registry behind the distances is sample data: 8 Alexandria entries. A hosted live API for running the crew from this page is in progress.</p></section>
+<p class="note" id="hn">Honesty label: the recorded replay reads the output of a real tool-enabled run (docs/data/run.json in the repo, ~106 seconds on Groq). The resource registry behind the distances is sample data: 8 Alexandria entries.</p></section>
+
+<section><h2><small>THE GLOBE</small>Any region, watched live</h2>
+<p class="lead">A command view of where reports land. It opens on the recorded Alexandria run, then flies anywhere on Earth you ask. Geocoding works worldwide (OpenStreetMap). Honest limit: the recorded run and the sample resource registry are Alexandria only - other regions come to life when you run a live report below.</p>
+<div class="globewrap hud">
+<canvas id="globe" role="img" aria-label="Rotating 3D wireframe globe with incident markers; the list next to it names every plotted incident"></canvas>
+<div class="geoside">
+<div class="geobar"><label for="geoin">REGION</label><input id="geoin" type="text" value="Alexandria, Egypt" autocomplete="off"><button id="geogo" class="run sm" type="button">Fly</button></div>
+<div class="geostat" id="geostat" role="status">LOADING…</div>
+<ul class="geolist" id="geolist"></ul>
+</div>
+</div>
+</section>
+
+<section><h2><small>RUN IT LIVE</small>Your report, real agents</h2>
+<p class="lead">Send one report to the hosted crew (the same code that produced the recorded run) and watch it come back verified, ranked and planned against. One report, up to 400 characters. Live runs are rate-limited, so if the API is busy the page falls back to the recorded run and says so.</p>
+<div class="panel hud"><div class="panelbar"><i></i><i></i><i></i><span>live · your report</span></div>
+<label for="ta" style="font:11px var(--mono);letter-spacing:2px;color:var(--m)">REPORT TEXT (ARABIC OR ENGLISH, MAX 400 CHARS)</label>
+<textarea id="ta" class="liveta" maxlength="400" rows="3">سيول في حي المنشية بالإسكندرية، المياه وصلت لمتر وفيه أسرة محتجزة في الدور الثاني</textarea>
+<div class="runrow" style="margin-top:12px"><button class="run" id="golive">⇡ Run live</button><span class="chip chip-amb" id="livestat">API: aidmesh-production.up.railway.app</span></div></div>
+<p class="note">Live mode calls the public demo API (max 6 reports per run, 4 runs per hour per visitor). Everything it returns is produced live by the crew; the resource registry it plans against is the same sample Alexandria registry.</p></section>
 
 <section><h2><small>THE INTAKE</small>What LangChain extracted</h2>
 <p class="lead">Before the crew starts, every raw report becomes a structured incident. This is the actual extracted JSON from the same run.</p>
 <div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>intake · incidents.json</span></div><pre class="term" id="inc">Loading…</pre></div>
-<div class="next"><a href="alert.html"><small>← BACK</small><h4>📣 Community Communicator</h4></a><a href="https://github.com/Alouakhalid/aidmesh" style="text-align:right"><small>RUN IT YOURSELF</small><h4>Clone the repo →</h4></a></div></section>
+<div class="next"><a href="alert.html"><small>← BACK</small><h4><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L7 9H3v6h4l14 5V4z"/><path d="M7 15v4h3v-4.6"/></svg> Community Communicator</h4></a><a href="https://github.com/Alouakhalid/aidmesh" style="text-align:right"><small>RUN IT YOURSELF</small><h4>Clone the repo →</h4></a></div></section>
 </main>
 <footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
 <script type="module" src="assets/app.js"></script>
+<script type="module" src="assets/globe.js"></script>
 <script type="module">
-const D=await fetch('data/run.json').then(r=>r.json());
-document.getElementById('inc').textContent=JSON.stringify(D.incidents,null,1);
-if(D.meta){const tc=Object.entries(D.meta.tool_calls).map(([k,v])=>k+' ×'+v).join(', ');document.getElementById('meta').textContent='Recorded real run · model '+D.meta.model+' · '+D.meta.seconds+'s end to end · tool calls: '+tc}
-const inn=document.getElementById('in'),out=document.getElementById('out'),tabs=document.getElementById('tabs');
-const names={verification:'🛡️ Verify',triage:'🎯 Triage',dispatch:'🚁 Dispatch',communication:'📣 Alerts'};
-Object.entries(names).forEach(([k,v])=>{const b=document.createElement('button');b.textContent=v;b.onclick=()=>show(k);b.dataset.k=k;tabs.appendChild(b)});
-function show(k){tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k==k));out.textContent=D.stages[k]}
+const $=id=>document.getElementById(id);
+const names={verification:'Verify',triage:'Triage',dispatch:'Dispatch',communication:'Communicate'};
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
-document.getElementById('go').onclick=async()=>{inn.innerHTML='';out.textContent='Intake: extracting incidents…';tabs.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
- for(const x of D.reports){inn.insertAdjacentHTML('beforeend',`<div class="rep ${/[\u0600-\u06FF]/.test(x.text)?'rtl':''}"><b>${x.id}</b> <span class="tag P3">${x.source}</span><br>${x.text.replace(/</g,'&lt;')}</div>`);await wait(450)}
- for(const k of Object.keys(names)){out.textContent='Agent working: '+names[k]+'…';await wait(900);show(k);await wait(1500)}};
+const inn=$('in'),out=$('out'),tabs=$('tabs'),mode=$('mode');
+let D=null;
+Object.entries(names).forEach(([k,v])=>{const b=document.createElement('button');b.textContent=v;b.onclick=()=>show(k);b.dataset.k=k;tabs.appendChild(b)});
+function show(k){if(!D)return;tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k==k));out.textContent=D.stages[k]}
+function showReports(){inn.innerHTML='';for(const x of D.reports){inn.insertAdjacentHTML('beforeend',`<div class="rep ${/[\u0600-\u06FF]/.test(x.text)?'rtl':''}"><b>${x.id}</b> <span class="tag P3">${String(x.source||'report').replace(/</g,'&lt;')}</span><br>${x.text.replace(/</g,'&lt;')}</div>`)}}
+async function animate(){inn.innerHTML='';out.textContent='Intake: extracting incidents…';tabs.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+ for(const x of D.reports){inn.insertAdjacentHTML('beforeend',`<div class="rep ${/[\u0600-\u06FF]/.test(x.text)?'rtl':''}"><b>${x.id}</b> <span class="tag P3">${String(x.source||'report').replace(/</g,'&lt;')}</span><br>${x.text.replace(/</g,'&lt;')}</div>`);await wait(450)}
+ for(const k of Object.keys(names)){out.textContent='Agent working: '+names[k]+'…';await wait(900);show(k);await wait(1500)}}
+/* recorded run */
+const R=await fetch('data/run.json').then(r=>r.json());
+D=R;
+$('inc').textContent=JSON.stringify(R.incidents,null,1);
+if(R.meta){const tc=Object.entries(R.meta.tool_calls).map(([k,v])=>k+' ×'+v).join(', ');$('meta').textContent='Recorded real run · model '+R.meta.model+' · '+R.meta.seconds+'s end to end · tool calls: '+tc}
+showReports();show('verification');
+$('go').onclick=async()=>{D=R;mode.textContent='MODE: RECORDED RUN';mode.classList.remove('live');$('meta').textContent='Recorded real run · model '+R.meta.model+' · '+R.meta.seconds+'s end to end';await animate()};
+/* live run */
+const API='https://aidmesh-production.up.railway.app';
+$('golive').onclick=async()=>{
+ const txt=$('ta').value.trim().slice(0,400);
+ if(!txt){$('livestat').textContent='WRITE A REPORT FIRST';return}
+ const btn=$('golive');btn.disabled=true;
+ try{
+  $('livestat').textContent='LIVE: SENDING TO THE CREW…';
+  const res=await fetch(API+'/api/run',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({reports:[{id:'R1',text:txt}]})});
+  if(!res.ok)throw new Error('HTTP '+res.status);
+  const job=await res.json();
+  $('livestat').textContent='LIVE: QUEUED · JOB '+String(job.job_id).slice(0,8)+'…';
+  let done=null;
+  for(let i=0;i<50;i++){await wait(3000);
+   let st;try{st=await (await fetch(API+'/api/job/'+job.job_id)).json()}catch(e){continue}
+   $('livestat').textContent='LIVE: '+String(st.status||'working').toUpperCase()+' · '+(i*3+3)+'S';
+   if(st.status==='done'){done=st.result||st;break}
+   if(st.status==='error')throw new Error('crew error')}
+  if(!done)throw new Error('timeout');
+  if(!done.stages)throw new Error('bad result');
+  D=done;mode.textContent='MODE: LIVE RUN';mode.classList.add('live');
+  $('meta').textContent='Live run · just now · produced by the hosted crew over the API';
+  $('inc').textContent=JSON.stringify(done.incidents||[],null,1);
+  $('livestat').textContent='LIVE: DONE · SCROLL UP TO WATCH THE STAGES';
+  await animate();
+  if(window.__aidmeshPlotLive)window.__aidmeshPlotLive(done.incidents||[]);
+ }catch(e){
+  $('livestat').textContent='LIVE UNAVAILABLE ('+String(e.message||e).toUpperCase()+') · SHOWING THE RECORDED RUN INSTEAD';
+  D=R;mode.textContent='MODE: RECORDED RUN (LIVE FALLBACK)';mode.classList.remove('live');
+  showReports();show('verification');
+ }finally{btn.disabled=false}};
 </script>
-</body></html>
+</body></html></body></html>

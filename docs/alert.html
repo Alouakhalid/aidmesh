@@ -11,7 +11,6 @@
 </head><body data-scene="alert">
 <a class="skip" href="#main">Skip to content</a>
 <canvas id="bg" aria-hidden="true"></canvas>
-<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <nav aria-label="Primary"><b><img src="assets/logo.svg" alt="">AidMesh</b>
 <button id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">☰</button>
 <div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a class="here" href="verify.html">The crew</a><a href="tools.html">Toolbox</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
@@ -19,16 +18,20 @@
 <section class="hero" style="min-height:62vh">
 <div class="wm-num" aria-hidden="true">04</div>
 <div class="kicker">AGENT 04 · CREWAI</div>
-<h1>📣 The Community<br><span>Communicator</span></h1>
-<p class="lead">The last agent in the crew speaks to the public. Bilingual alerts for responders and residents, and corrections that defuse rumours before they become stampedes.</p>
+<h1><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L7 9H3v6h4l14 5V4z"/><path d="M7 15v4h3v-4.6"/></svg> The Community<br><span class="ol">Communicator</span></h1>
+<p class="lead blur-in">The last agent in the crew speaks to the public. Bilingual alerts for responders and residents, and corrections that defuse rumours before they become stampedes.</p>
 <div class="badges"><i>Role: Community Communicator</i><i>Goal: the public hears the truth</i><i>Arabic + English</i></div>
 </section>
 
+<section><h2><small>AGENT CONSOLE</small>Status, tools and output</h2>
+<div class="console hud" data-agent="communication"></div>
+<noscript><p class="note">Enable JavaScript to see the agent console; the recorded output further down shows the same run.</p></noscript></section>
+
 <section><h2><small>WHAT IT DOES</small>Words calibrated for a crisis</h2>
-<div class="feat"><div class="ic">🌍</div><div><h4>Truly bilingual</h4><p>Not translation as an afterthought. Arabic and English alerts written for their audiences, matching the languages the reports arrived in.</p></div></div>
-<div class="feat"><div class="ic">📱</div><div><h4>Channel-ready</h4><p>Short, SMS-length messages. No jargon, no paragraphs. What is happening, what to do, what not to do.</p></div></div>
-<div class="feat"><div class="ic">🧯</div><div><h4>Rumour correction</h4><p>When Verify kills a rumour, Alert publicly defuses it: "No confirmed dam collapse. Stay calm, await official updates." In both languages.</p></div></div>
-<div class="feat"><div class="ic">🎯</div><div><h4>Right message, right people</h4><p>Responder instructions carry operational detail. Public alerts carry calm and direction. They are never the same text.</p></div></div></section>
+<div class="feat"><div class="ic"><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/></svg></div><div><h4>Truly bilingual</h4><p>Not translation as an afterthought. Arabic and English alerts written for their audiences, matching the languages the reports arrived in.</p></div></div>
+<div class="feat"><div class="ic"><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18.5h2"/></svg></div><div><h4>Channel-ready</h4><p>Short, SMS-length messages. No jargon, no paragraphs. What is happening, what to do, what not to do.</p></div></div>
+<div class="feat"><div class="ic"><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div><div><h4>Rumour correction</h4><p>When Verify kills a rumour, Alert publicly defuses it: "No confirmed dam collapse. Stay calm, await official updates." In both languages.</p></div></div>
+<div class="feat"><div class="ic"><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div><div><h4>Right message, right people</h4><p>Responder instructions carry operational detail. Public alerts carry calm and direction. They are never the same text.</p></div></div></section>
 
 <section><h2><small>REAL OUTPUT</small>From the recorded demo run</h2>
 <div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>alert-agent · output.txt</span></div><pre class="term" id="out" data-stage="communication"></pre></div></section>
@@ -37,10 +40,10 @@
 <div class="grid">
 <div class="card"><h3>Before AidMesh</h3><p>The fake dam collapse spreads for hours unanswered. Families flee into flooded roads. The rumour hurts more people than the water.</p></div>
 <div class="card"><h3>With Alert</h3><p>A calm, bilingual correction goes out with the first response wave, while responders get instructions tuned to them.</p></div></div>
-<div class="next"><a href="dispatch.html"><small>← PREVIOUS AGENT</small><h4>🚁 Resource Dispatcher</h4></a><a href="demo.html" style="text-align:right"><small>SEE THEM ALL RUN</small><h4>▶ Live replay →</h4></a></div></section>
+<div class="next"><a href="dispatch.html"><small>← PREVIOUS AGENT</small><h4><svg class="sic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Resource Dispatcher</h4></a><a href="demo.html" style="text-align:right"><small>SEE THEM ALL RUN</small><h4>▶ Live replay →</h4></a></div></section>
 </main>
 <footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
-<script type="module" src="assets/app.js"></script>
+<script type="module" src="assets/app.js"></script><script src="assets/console.js" defer></script>
 <script type="module">
 const el=document.getElementById('out');
 const d=await fetch('data/run.json').then(r=>r.json());
