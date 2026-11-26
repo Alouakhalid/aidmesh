@@ -1,22 +1,21 @@
 <div align="center">
 
-<img src="docs/assets/logo.svg" width="110" alt="AidMesh logo">
-
-# AidMesh
-
-**An AI crew that turns crisis chaos into verified, ranked, dispatchable action.**
+<img src="docs/readme-assets/hero.svg" alt="AidMesh animated banner" width="100%">
 
 [![Live site](https://img.shields.io/badge/live%20site-GitHub%20Pages-22d3ee?style=for-the-badge)](https://alouakhalid.github.io/aidmesh/)
 [![LangChain](https://img.shields.io/badge/LangChain-intake-a78bfa?style=for-the-badge)](https://python.langchain.com)
 [![CrewAI](https://img.shields.io/badge/CrewAI-4%20agents%20%2B%205%20tools-fb7185?style=for-the-badge)](https://crewai.com)
 [![Groq](https://img.shields.io/badge/Groq-gpt--oss--120b-f55036?style=for-the-badge)](https://groq.com)
-![Tests](https://img.shields.io/badge/tests-18%20passing-34d399?style=for-the-badge)
+![Tests](https://img.shields.io/badge/tests-19%20passing-34d399?style=for-the-badge)
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776ab?style=for-the-badge&logo=python&logoColor=white)
+![Languages](https://img.shields.io/badge/Arabic%20%2B%20English-bilingual-fbbf24?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey?style=for-the-badge)
 
-PromptWars × AI Vibeathon 2026
+**[Open the live 3D site](https://alouakhalid.github.io/aidmesh/)** &nbsp;|&nbsp; **[Watch the replay](https://alouakhalid.github.io/aidmesh/demo.html)** &nbsp;|&nbsp; **[Meet the tools](https://alouakhalid.github.io/aidmesh/tools.html)**
 
 </div>
+
+<p align="center"><img src="docs/readme-assets/demo.gif" alt="Animated demo: pressing Run the crew on the replay page and the agents' output streaming in" width="82%"><br><sub>Real screen capture of the live replay page. The run it replays is a recorded real run (see Real results).</sub></p>
 
 ---
 
@@ -30,18 +29,7 @@ Raw Arabic and English reports go in. Out comes a plan a coordinator can act on:
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  R[Raw reports<br/>calls, SMS, social<br/>Arabic + English] --> I[LangChain intake<br/>ChatGroq + Pydantic schema]
-  I --> V[Verification Analyst]
-  V --> T[Triage Lead]
-  T --> D[Resource Dispatcher]
-  D --> C[Community Communicator]
-  V -. uses .-> X1[credibility_score<br/>detect_language]
-  T -. uses .-> X2[geocode_place<br/>weather_flood_risk]
-  D -. uses .-> X3[geocode_place<br/>nearest_resources<br/>weather_flood_risk]
-  C --> O[Action plan +<br/>AR/EN alerts]
-```
+<p align="center"><img src="docs/readme-assets/pipeline.svg" alt="AidMesh pipeline diagram" width="100%"></p>
 
 | Stage | Framework | Job |
 |---|---|---|
@@ -74,6 +62,17 @@ One run on the six sample reports in `data/reports.json` (Arabic + English, one 
 | Rumour handling | Dam-collapse claim labelled RUMOUR (credibility score 0: shouting, "share now", extreme casualty claim) |
 | Tool calls made by the agents | `credibility_score` x5, `geocode_place` x5, `nearest_resources` x3, `weather_flood_risk` x1 |
 | Wall-clock time | about 106 seconds for the whole crew (the earlier version without tools took about 25 seconds) |
+
+## The website
+
+A multi-page 3D animated site (Three.js, no build step) hosted on GitHub Pages. Screenshots below were taken from the live site.
+
+| | |
+|---|---|
+| ![Home](docs/readme-assets/index.jpg)<br>**Home** | ![Use cases](docs/readme-assets/use-cases.jpg)<br>**Use cases** |
+| ![Verify](docs/readme-assets/verify.jpg)<br>**Verification agent** | ![Triage](docs/readme-assets/triage.jpg)<br>**Triage agent** |
+| ![Dispatch](docs/readme-assets/dispatch.jpg)<br>**Dispatcher agent** | ![Alerts](docs/readme-assets/alert.jpg)<br>**Communicator agent** |
+| ![Toolbox](docs/readme-assets/tools.jpg)<br>**Toolbox** | ![Replay](docs/readme-assets/demo.jpg)<br>**Live replay** |
 
 ## Quick start
 
