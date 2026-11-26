@@ -96,6 +96,14 @@ else if(scene==='alert'){
   tick=t=>{drift(pts,[24,15,12]);core.scale.setScalar(1+Math.sin(t*.006)*.15);
     rings.forEach((ring,i)=>{const p=(t*.0004+i/rings.length)%1;ring.scale.setScalar(1+p*11);ring.material.opacity=.6*(1-p);ring.rotation.x=t*.0003+i})};
 }
+else if(scene==='tools'){
+  const knot=new THREE.Mesh(new THREE.TorusKnotGeometry(4.6,1.1,120,14),new THREE.MeshBasicMaterial({color:0xa78bfa,wireframe:true,transparent:true,opacity:.3}));G.add(knot);
+  const sats=[];
+  for(let i=0;i<5;i++){const s=new THREE.Mesh(new THREE.OctahedronGeometry(.7,0),new THREE.MeshBasicMaterial({color:[0x22d3ee,0x34d399,0xfbbf24,0xfb7185,0xa78bfa][i],wireframe:true}));s.userData.ph=i/5*Math.PI*2;G.add(s);sats.push(s)}
+  const pts=stars(40,44,[0x22d3ee,0xa78bfa,0x34d399]);
+  tick=t=>{drift(pts,[24,15,12]);knot.rotation.x=t*.00025;knot.rotation.y=t*.0004;
+    sats.forEach(s=>{const a=t*.0006+s.userData.ph;s.position.set(Math.cos(a)*11,Math.sin(a*1.3)*4,Math.sin(a)*11);s.rotation.y=t*.001})};
+}
 function loop(t){requestAnimationFrame(loop);
   G.rotation.y+=(mx*.9-G.rotation.y)*.04;G.rotation.x+=(my*.5-G.rotation.x)*.04;
   if(tick)tick(t);r.render(sc,cam)}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The toolbox | AidMesh</title>
+<meta name="description" content="The real tools the AidMesh crew calls: credibility scoring, language detection, geocoding, flood-risk weather and nearest-resource lookup.">
+<link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
+</head><body data-scene="tools">
+<canvas id="bg"></canvas>
+<nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
+<button id="burger">☰</button>
+<div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a href="verify.html">The crew</a><a class="here" href="tools.html">Toolbox</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
+<main>
+<section class="hero" style="min-height:62vh">
+<div class="kicker">AGENT TOOLS</div>
+<h1>Agents that only talk<br><span>are chatbots. These act.</span></h1>
+<p class="lead">Every agent in the crew calls real tools: scoring functions, live map and weather APIs, a resource registry. The LLM decides. The tools know.</p>
+<div class="badges"><i>5 tools</i><i>14 tool calls in the recorded run</i><i>openai/gpt-oss-120b on Groq</i></div>
+</section>
+
+<section><h2><small>THE FIVE TOOLS</small>What the crew can actually do</h2>
+<div class="grid">
+<div class="card"><h3>🧪 credibility_score</h3><p>A rule-based 0 to 100 rumour score with its reasons in plain language: extreme casualty claims, vague locations, missing corroboration all cost points. Called by the <b>Verifier</b>.</p><span class="tag P3">rule-based</span><span class="tag V">explainable</span></div>
+<div class="card"><h3>🌐 detect_language</h3><p>Tells Arabic from English from mixed, so a bilingual report stream is routed and counted correctly. Called by the <b>Verifier</b>.</p><span class="tag P3">ar / en / mixed</span></div>
+<div class="card"><h3>📍 geocode_place</h3><p>Turns "Sidi Gaber clinic" into real coordinates through OpenStreetMap Nominatim. Called by <b>Triage</b> and <b>Dispatch</b>.</p><span class="tag P3">OpenStreetMap</span></div>
+<div class="card"><h3>🌧️ weather_flood_risk</h3><p>Next-24h rain and river-discharge trend from Open-Meteo, so triage knows whether the water is still rising. Called by <b>Triage</b> and <b>Dispatch</b>.</p><span class="tag P3">Open-Meteo</span></div>
+<div class="card"><h3>🚑 nearest_resources</h3><p>Nearest hospital, dialysis, rescue, shelter, electric or water unit by distance. Called by <b>Dispatch</b>.</p><span class="tag U">sample registry: 8 Alexandria entries</span></div></div>
+<p class="note">Honesty label: the resource registry is sample data (8 entries for Alexandria) standing in for a real civil-defence registry. Geocoding and weather are live public APIs.</p></section>
+
+<section><h2><small>PROOF</small>Tool calls in the recorded run</h2>
+<p class="lead">From the meta block of the real recorded run (docs/data/run.json). Six reports, six incidents, fourteen tool calls.</p>
+<div class="grid">
+<div class="card"><div class="big" data-n="14">0</div><h3>tool calls</h3><p>5 credibility scores, 5 geocodes, 3 resource lookups, 1 flood-risk check.</p></div>
+<div class="card"><div class="big" data-n="106">0</div><h3>seconds end to end</h3><p>Full pipeline on Groq: intake, four agents, all tool calls. Minutes of human sorting, gone.</p></div>
+<div class="card"><div class="big" data-n="6">0</div><h3>incidents out</h3><p>Each one geocoded, scored and ranked before a human ever reads it.</p></div></div></section>
+
+<section><h2><small>TOOLS IN ACTION</small>What Dispatch produced with them</h2>
+<p class="lead">Real output from the recorded run. Notice the named stations and distances: those come from geocode_place and nearest_resources, not from the model's imagination.</p>
+<div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>dispatch-agent · with tools</span></div><pre class="term" id="out"></pre></div>
+<div class="next"><a href="verify.html"><small>← BACK</small><h4>🛡️ The crew</h4></a><a href="demo.html" style="text-align:right"><small>SEE THE FULL RUN</small><h4>▶ Live replay →</h4></a></div></section>
+</main>
+<footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
+<script type="module" src="assets/app.js"></script>
+<script type="module">
+const el=document.getElementById('out');
+const d=await fetch('data/run.json').then(r=>r.json());
+const txt=d.stages.dispatch;
+let i=0;el.innerHTML='<span class="cursor"></span>';
+const id=setInterval(()=>{i+=6;if(i>=txt.length){el.textContent=txt;clearInterval(id)}else el.innerHTML=txt.slice(0,i).replace(/</g,'&lt;')+'<span class="cursor"></span>'},12);
+</script>
+</body></html>

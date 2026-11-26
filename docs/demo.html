@@ -8,7 +8,7 @@
 <canvas id="bg"></canvas>
 <nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
 <button id="burger">☰</button>
-<div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a href="verify.html">The crew</a><a class="here" href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
+<div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a href="verify.html">The crew</a><a href="tools.html">Toolbox</a><a class="here" href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
 <main>
 <section class="hero" style="min-height:56vh">
 <div class="kicker">LIVE REPLAY</div>
@@ -17,12 +17,12 @@
 </section>
 
 <section><h2><small>THE RUN</small>Six reports in, one plan out</h2>
-<button class="run" id="go">▶ Run the crew</button>
+<button class="run" id="go">▶ Run the crew</button><p class="lead" id="meta" style="font-size:15px;margin-top:10px"></p>
 <div class="demo">
 <div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>incoming · reports.json</span></div><div id="in"></div></div>
 <div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>crew · stdout</span></div><div class="tabs" id="tabs"></div><pre class="term" id="out">Waiting for run…</pre></div>
 </div>
-<p class="note">Honesty label: this replay reads the recorded output of a real run (docs/data/run.json in the repo). A hosted live API for running the crew from this page is in progress.</p></section>
+<p class="note">Honesty label: this replay reads the recorded output of a real tool-enabled run (docs/data/run.json in the repo, ~106 seconds on Groq). The resource registry behind the distances is sample data: 8 Alexandria entries. A hosted live API for running the crew from this page is in progress.</p></section>
 
 <section><h2><small>THE INTAKE</small>What LangChain extracted</h2>
 <p class="lead">Before the crew starts, every raw report becomes a structured incident. This is the actual extracted JSON from the same run.</p>
@@ -34,6 +34,7 @@
 <script type="module">
 const D=await fetch('data/run.json').then(r=>r.json());
 document.getElementById('inc').textContent=JSON.stringify(D.incidents,null,1);
+if(D.meta){const tc=Object.entries(D.meta.tool_calls).map(([k,v])=>k+' ×'+v).join(', ');document.getElementById('meta').textContent='Recorded real run · model '+D.meta.model+' · '+D.meta.seconds+'s end to end · tool calls: '+tc}
 const inn=document.getElementById('in'),out=document.getElementById('out'),tabs=document.getElementById('tabs');
 const names={verification:'🛡️ Verify',triage:'🎯 Triage',dispatch:'🚁 Dispatch',communication:'📣 Alerts'};
 Object.entries(names).forEach(([k,v])=>{const b=document.createElement('button');b.textContent=v;b.onclick=()=>show(k);b.dataset.k=k;tabs.appendChild(b)});

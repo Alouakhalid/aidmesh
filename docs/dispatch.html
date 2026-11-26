@@ -8,20 +8,20 @@
 <canvas id="bg"></canvas>
 <nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
 <button id="burger">☰</button>
-<div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a class="here" href="verify.html">The crew</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
+<div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a class="here" href="verify.html">The crew</a><a href="tools.html">Toolbox</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
 <main>
 <section class="hero" style="min-height:62vh">
 <div class="kicker">AGENT 03 · CREWAI</div>
 <h1>🚁 The Resource<br><span>Dispatcher</span></h1>
 <p class="lead">Priority without a plan is just anxiety. The Dispatcher turns every ranked incident into a resource, a first safe action, and the hazard to check before anyone moves.</p>
-<div class="badges"><i>Role: Resource Dispatcher</i><i>Goal: a safe plan per incident</i><i>Output: resource + action + hazard</i></div>
+<div class="badges"><i>Role: Resource Dispatcher</i><i>Goal: a safe plan per incident</i><i>Tools: geocode_place · nearest_resources · weather_flood_risk</i></div>
 </section>
 
 <section><h2><small>WHAT IT DOES</small>Plans a responder can actually use</h2>
-<div class="feat"><div class="ic">🚤</div><div><h4>Resource matching</h4><p>Swift-water rescue with a paramedic for the trapped family. An electrical-hazard team with insulated gear for the live wire. A mobile generator crew for the dialysis clinic.</p></div></div>
+<div class="feat"><div class="ic">🚤</div><div><h4>Named resources, real distances</h4><p>nearest_resources + geocode_place turn "send help" into "Montaza Civil Defence Station, 4.5 km" for the trapped family and "Electricity Emergency Unit - Smouha, 1.2 km" for the dialysis clinic.</p></div></div>
 <div class="feat"><div class="ic">🦺</div><div><h4>First safe action, always</h4><p>Never "go". Always "isolate the live wire before any personnel enter the water". The first instruction is the one that keeps the rescuer alive.</p></div></div>
 <div class="feat"><div class="ic">⚠️</div><div><h4>Hazard callouts</h4><p>Current strength, conducting water, fuel flammability, unstable embankments. Every plan names what could kill the rescue.</p></div></div>
-<div class="feat"><div class="ic">🛰️</div><div><h4>Recon for rumours</h4><p>The unverified dam collapse gets a UAV survey, not boots. Confirm before you deploy.</p></div></div></section>
+<div class="feat"><div class="ic">🗂️</div><div><h4>Registry, not imagination</h4><p>Distances come from a resource registry (a sample of 8 Alexandria entries in this demo), never from the model making up a station. Swap in a real civil-defence registry and the same crew works anywhere.</p></div></div></section>
 
 <section><h2><small>REAL OUTPUT</small>From the recorded demo run</h2>
 <div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>dispatch-agent · output.txt</span></div><pre class="term" id="out" data-stage="dispatch"></pre></div></section>
