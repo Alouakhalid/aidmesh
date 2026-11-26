@@ -15,15 +15,15 @@
 
 </div>
 
-<p align="center"><img src="docs/readme-assets/demo.gif" alt="Animated demo: pressing Run the crew on the replay page and the agents' output streaming in" width="82%"><br><sub>Real screen capture of the live replay page. The run it replays is a recorded real run (see Real results).</sub></p>
+<p align="center"><img src="docs/readme-assets/demo.jpg" alt="The live replay page: the agents output streaming in" width="82%"><br><sub>The replay page: a recorded real run of the crew, with a live mode that calls the hosted API.</sub></p>
 
 ---
 
 ## Presentation video
 
-[![Watch the 90 second presentation](docs/media/poster.jpg)](docs/media/aidmesh-presentation.mp4)
+[![Watch the 90 second presentation on LinkedIn](docs/media/poster.jpg)](https://www.linkedin.com/feed/update/urn:li:activity:7531594395373203456/)
 
-90 second walkthrough of the problem, the four agents and a real recorded run: [docs/media/aidmesh-presentation.mp4](docs/media/aidmesh-presentation.mp4). LinkedIn post text: [docs/linkedin-post.md](docs/linkedin-post.md).
+90 second walkthrough of the problem, the four agents and a real recorded run, in the [LinkedIn post](https://www.linkedin.com/feed/update/urn:li:activity:7531594395373203456/) (the video is kept out of the repo to stay small). Post text: [docs/linkedin-post.md](docs/linkedin-post.md).
 
 ## The problem
 
