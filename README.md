@@ -6,7 +6,7 @@
 [![LangChain](https://img.shields.io/badge/LangChain-intake-a78bfa?style=for-the-badge)](https://python.langchain.com)
 [![CrewAI](https://img.shields.io/badge/CrewAI-4%20agents%20%2B%205%20tools-fb7185?style=for-the-badge)](https://crewai.com)
 [![Groq](https://img.shields.io/badge/Groq-gpt--oss--120b-f55036?style=for-the-badge)](https://groq.com)
-![Tests](https://img.shields.io/badge/tests-19%20passing-34d399?style=for-the-badge)
+![Tests](https://img.shields.io/badge/tests-40%20passing-34d399?style=for-the-badge)
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776ab?style=for-the-badge&logo=python&logoColor=white)
 ![Languages](https://img.shields.io/badge/Arabic%20%2B%20English-bilingual-fbbf24?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey?style=for-the-badge)
@@ -124,7 +124,7 @@ curl -X POST https://aidmesh-production.up.railway.app/api/run -H 'content-type:
 ## Tests
 
 ```bash
-pip install pytest && pytest -q      # 19 tests, no network and no API key needed
+pip install pytest && pytest -q      # 40 tests, no network and no API key needed
 ```
 
 They cover language detection, haversine distance, credibility scoring on a rumour versus a specific call, nearest-resource sorting and filtering, geocoding and weather parsing with mocked HTTP and graceful failure, the CrewAI tool wrappers, API input validation, per-IP rate limiting, CORS, and the shape of the recorded run.
