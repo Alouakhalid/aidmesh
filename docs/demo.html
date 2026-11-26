@@ -3,6 +3,10 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Live replay | AidMesh</title>
 <meta name="description" content="Replay a real recorded AidMesh crew run on six Alexandria flood reports, stage by stage.">
+<meta property="og:title" content="Live replay | AidMesh">
+<meta property="og:description" content="Replay a real recorded AidMesh crew run on six Alexandria flood reports, stage by stage.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alouakhalid.github.io/aidmesh/demo.html">
 <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
 </head><body data-scene="demo">
 <a class="skip" href="#main">Skip to content</a>
@@ -21,7 +25,7 @@
 <button class="run" id="go">▶ Run the crew</button><p class="lead" id="meta" style="font-size:15px;margin-top:10px"></p>
 <div class="demo">
 <div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>incoming · reports.json</span></div><div id="in"></div></div>
-<div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>crew · stdout</span></div><div class="tabs" id="tabs"></div><pre class="term" id="out">Waiting for run…</pre></div>
+<div class="panel"><div class="panelbar"><i></i><i></i><i></i><span>crew · stdout</span></div><div class="tabs" id="tabs" role="tablist" aria-label="Crew stages"></div><pre class="term" id="out">Waiting for run…</pre></div>
 </div>
 <p class="note">Honesty label: this replay reads the recorded output of a real tool-enabled run (docs/data/run.json in the repo, ~106 seconds on Groq). The resource registry behind the distances is sample data: 8 Alexandria entries. A hosted live API for running the crew from this page is in progress.</p></section>
 
