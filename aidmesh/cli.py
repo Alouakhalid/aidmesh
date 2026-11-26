@@ -1,6 +1,5 @@
 import argparse, json, pathlib
-from .intake import run_intake
-from .crew import build_crew
+from .pipeline import run_pipeline
 
 
 def main():
@@ -9,18 +8,10 @@ def main():
     p.add_argument("--out", default="docs/data/run.json")
     a = p.parse_args()
     reports = json.loads(pathlib.Path(a.reports).read_text())
-    incidents = run_intake(reports)
-    inc_json = incidents.model_dump_json(indent=2)
-    crew = build_crew(inc_json)
-    result = crew.kickoff()
-    stages = {}
-    names = ["verification", "triage", "dispatch", "communication"]
-    for n, t in zip(names, crew.tasks):
-        stages[n] = t.output.raw if t.output else ""
-    out = {"reports": reports, "incidents": json.loads(inc_json)["incidents"], "stages": stages}
+    out = run_pipeline(reports)
     pathlib.Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     pathlib.Path(a.out).write_text(json.dumps(out, ensure_ascii=False, indent=2))
-    print(result)
+    print(out["stages"]["communication"])
 
 
 if __name__ == "__main__":
