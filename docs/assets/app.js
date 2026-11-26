@@ -105,6 +105,6 @@ else if(scene==='tools'){
     sats.forEach(s=>{const a=t*.0006+s.userData.ph;s.position.set(Math.cos(a)*11,Math.sin(a*1.3)*4,Math.sin(a)*11);s.rotation.y=t*.001})};
 }
 function loop(t){if(matchMedia('(prefers-reduced-motion: reduce)').matches){if(tick)tick(0);r.render(sc,cam)}else requestAnimationFrame(loop);
-  G.rotation.y+=(mx*.9-G.rotation.y)*.04;G.rotation.x+=(my*.5-G.rotation.x)*.04;
+  const sy=scrollY/((document.body.scrollHeight-innerHeight)||1);G.rotation.y+=(mx*.9+sy*.7-G.rotation.y)*.04;G.rotation.x+=(my*.5+sy*.25-G.rotation.x)*.04;
   if(tick)tick(t);r.render(sc,cam)}
 if(matchMedia('(prefers-reduced-motion: reduce)').matches){if(tick)tick(0);r.render(sc,cam)}else requestAnimationFrame(loop);

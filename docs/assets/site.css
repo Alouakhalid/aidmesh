@@ -97,3 +97,28 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--a);outline-offset:3
  #portal{display:none}
  .card,.feat,.step{opacity:1;transform:none}
 }
+
+/* aurora light-blades behind everything */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;width:62vmax;height:62vmax;border-radius:50%;filter:blur(100px);opacity:.14}
+.aurora i:nth-child(1){background:radial-gradient(circle,#22d3ee,transparent 62%);top:-18%;left:-14%;animation:a1 26s ease-in-out infinite alternate}
+.aurora i:nth-child(2){background:radial-gradient(circle,#a78bfa,transparent 62%);bottom:-22%;right:-14%;animation:a2 32s ease-in-out infinite alternate}
+.aurora i:nth-child(3){background:radial-gradient(circle,#fb7185,transparent 62%);top:34%;left:42%;opacity:.09;animation:a3 38s ease-in-out infinite alternate}
+@keyframes a1{to{transform:translate(16vw,10vh) rotate(35deg)}}
+@keyframes a2{to{transform:translate(-12vw,-9vh) rotate(-28deg)}}
+@keyframes a3{to{transform:translate(-9vw,12vh)}}
+
+/* editorial serif accent inside hero headlines */
+h1 span{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:600;letter-spacing:-1px}
+
+/* liquid-glass hairline + top highlight */
+.card,.panel,.node,.next a{position:relative;box-shadow:inset 0 1px 0 #ffffff12}
+.card::before,.node::before,.next a::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,#ffffff26,#ffffff00 45%,#22d3ee1f);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+
+/* giant agent number watermark */
+.hero{position:relative}
+.wm-num{position:absolute;top:6vh;right:2vw;font-size:clamp(130px,24vw,320px);font-weight:900;line-height:.9;color:transparent;-webkit-text-stroke:1px #ffffff17;pointer-events:none;user-select:none;z-index:-1}
+
+/* scroll-drawn line through walkthrough steps */
+.step{position:relative}
+.step:not(:last-of-type)::before{content:"";position:absolute;left:25px;top:56px;bottom:-30px;width:1px;background:linear-gradient(#22d3ee55,#22d3ee08)}
