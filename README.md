@@ -92,6 +92,21 @@ curl -X POST localhost:8000/api/run -H 'content-type: application/json' \
   -d '{"reports":[{"id":"R1","text":"Water 1.5m at Manshiya, family on 2nd floor"}]}'
 ```
 
+## Live API
+
+A small FastAPI backend runs the same crew on demand: **https://aidmesh-production.up.railway.app** (hosted on a Railway trial plan).
+
+```bash
+curl https://aidmesh-production.up.railway.app/api/health
+curl -X POST https://aidmesh-production.up.railway.app/api/run -H 'content-type: application/json' \
+  -d '{"reports":[{"id":"R1","text":"Water 1.5m at Manshiya, family on 2nd floor"}]}'
+# -> {"job_id":"...","status":"queued"}; then poll GET /api/job/<job_id> until "done"
+```
+
+- Runs are jobs you poll, because a full crew run can take from about 20 seconds (one report) to about 2 minutes (six).
+- Limits: at most 6 reports of 400 characters, 4 runs per IP per hour, 150 per day, 3 jobs at once. The Groq key is a host secret, never in the repo or in browser code.
+- Hosting is a trial plan with limited credit. If the API is busy or down, the website falls back to the recorded real run.
+
 ## Tests
 
 ```bash
@@ -125,7 +140,7 @@ tests/            pytest suite
 - Nominatim can pick the wrong "Manshiya" for an ambiguous name. In the recorded run the Manshiya rescue unit came out as a farther station for this reason. Always show the coordinates to a human.
 - Credibility scores are simple rules, not ground truth. A real rumour can look specific.
 - The LLM can add details that did not come from a tool. In the recorded run the dispatcher mentioned a sand-storm hazard that no weather tool returned.
-- The crew with tools takes about 1.5 to 2 minutes per run. The public website replays the recorded run; it does not run the crew live unless a backend is configured.
+- The crew with tools takes about 1.5 to 2 minutes per run. The website replays a recorded real run and, when the hosted API is reachable, can run the crew live. The hosted API is on a trial plan with limited credit.
 
 ## License
 
