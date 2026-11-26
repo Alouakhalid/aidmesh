@@ -4,8 +4,26 @@
 <title>AidMesh | AI crew that turns crisis chaos into action</title>
 <meta name="description" content="AidMesh: LangChain + CrewAI + Groq agents verify, rank and dispatch crisis reports in seconds.">
 <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
-</head><body data-scene="mesh">
+<style>
+#portal{position:fixed;inset:0;z-index:30;display:flex;pointer-events:none}
+#portal .half{flex:1;background:#05080f;display:flex;align-items:center;overflow:hidden;transition:transform 1.15s cubic-bezier(.75,0,.2,1);position:relative}
+#portal .half.l{justify-content:flex-end;border-right:1px solid #22d3ee33}
+#portal .half.r{justify-content:flex-start;border-left:1px solid #22d3ee33}
+#portal .wm{font-size:clamp(70px,14vw,190px);font-weight:900;letter-spacing:.28em;color:var(--t);transition:letter-spacing 1.15s cubic-bezier(.75,0,.2,1),transform 1.15s cubic-bezier(.75,0,.2,1),opacity .9s .35s;white-space:nowrap}
+#portal .half.l .wm{transform:translateX(.14em);background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;color:transparent}
+#portal .half.r .wm{transform:translateX(-.14em);background:linear-gradient(90deg,var(--b),var(--r));-webkit-background-clip:text;color:transparent}
+#portal .hint{position:absolute;bottom:6vh;left:50%;transform:translateX(-50%);color:var(--m);font-size:12px;letter-spacing:4px;animation:pu 1.6s infinite;transition:opacity .4s}
+body.open #portal .half.l{transform:translateX(-101%)}
+body.open #portal .half.r{transform:translateX(101%)}
+body.open #portal .wm{letter-spacing:.02em;opacity:0}
+body.open #portal .half.l .wm{transform:translateX(60%)}
+body.open #portal .half.r .wm{transform:translateX(-60%)}
+body.open #portal .hint{opacity:0}
+body.open #portal{pointer-events:none}
+</style></head><body data-scene="mesh">
 <canvas id="bg"></canvas>
+<div id="portal"><div class="half l"><span class="wm">AID</span></div><div class="half r"><span class="wm">MESH</span></div><div class="hint">OPENING</div></div>
+
 <nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
 <button id="burger">☰</button>
 <div id="links"><a class="here" href="index.html">Home</a><a href="use-cases.html">Use cases</a><a href="verify.html">The crew</a><a href="tools.html">Toolbox</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
@@ -54,4 +72,10 @@
 </main>
 <footer>Built for PromptWars × AI Vibeathon 2026 · <a style="color:var(--a)" href="https://github.com/Alouakhalid/aidmesh">github.com/Alouakhalid/aidmesh</a></footer>
 <script type="module" src="assets/app.js"></script>
+<script>
+setTimeout(()=>document.body.classList.add('open'),1100);
+addEventListener('wheel',()=>document.body.classList.add('open'),{once:true});
+addEventListener('touchmove',()=>document.body.classList.add('open'),{once:true});
+document.getElementById('portal').addEventListener('transitionend',e=>{if(e.propertyName==='transform')document.getElementById('portal').remove()});
+</script>
 </body></html>
