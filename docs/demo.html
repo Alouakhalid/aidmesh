@@ -5,11 +5,12 @@
 <meta name="description" content="Replay a real recorded AidMesh crew run on six Alexandria flood reports, stage by stage.">
 <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
 </head><body data-scene="demo">
-<canvas id="bg"></canvas>
-<nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
-<button id="burger">☰</button>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="bg" aria-hidden="true"></canvas>
+<nav aria-label="Primary"><b><img src="assets/logo.svg" alt="">AidMesh</b>
+<button id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">☰</button>
 <div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a href="verify.html">The crew</a><a href="tools.html">Toolbox</a><a class="here" href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
-<main>
+<main id="main">
 <section class="hero" style="min-height:56vh">
 <div class="kicker">LIVE REPLAY</div>
 <h1>Watch the crew<br><span>work a real night.</span></h1>

@@ -15,7 +15,7 @@ addEventListener('pageshow',e=>{if(e.persisted){wipe.classList.remove('in');wipe
 
 /* ---------- burger ---------- */
 const bg=document.getElementById('burger');
-if(bg)bg.onclick=()=>document.getElementById('links').classList.toggle('open');
+if(bg)bg.onclick=()=>{const l=document.getElementById('links');const open=l.classList.toggle('open');bg.setAttribute('aria-expanded',open?'true':'false')};
 
 /* ---------- reveal on scroll ---------- */
 const io=new IntersectionObserver(es=>es.forEach(e=>{
@@ -104,7 +104,7 @@ else if(scene==='tools'){
   tick=t=>{drift(pts,[24,15,12]);knot.rotation.x=t*.00025;knot.rotation.y=t*.0004;
     sats.forEach(s=>{const a=t*.0006+s.userData.ph;s.position.set(Math.cos(a)*11,Math.sin(a*1.3)*4,Math.sin(a)*11);s.rotation.y=t*.001})};
 }
-function loop(t){requestAnimationFrame(loop);
+function loop(t){if(matchMedia('(prefers-reduced-motion: reduce)').matches){if(tick)tick(0);r.render(sc,cam)}else requestAnimationFrame(loop);
   G.rotation.y+=(mx*.9-G.rotation.y)*.04;G.rotation.x+=(my*.5-G.rotation.x)*.04;
   if(tick)tick(t);r.render(sc,cam)}
-requestAnimationFrame(loop);
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){if(tick)tick(0);r.render(sc,cam)}else requestAnimationFrame(loop);

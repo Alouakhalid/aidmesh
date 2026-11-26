@@ -5,11 +5,12 @@
 <meta name="description" content="The AidMesh Triage Lead ranks every verified incident P1, P2 or P3 by threat to life.">
 <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/site.css">
 </head><body data-scene="triage">
-<canvas id="bg"></canvas>
-<nav><b><img src="assets/logo.svg" alt="">AidMesh</b>
-<button id="burger">☰</button>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="bg" aria-hidden="true"></canvas>
+<nav aria-label="Primary"><b><img src="assets/logo.svg" alt="">AidMesh</b>
+<button id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">☰</button>
 <div id="links"><a href="index.html">Home</a><a href="use-cases.html">Use cases</a><a class="here" href="verify.html">The crew</a><a href="tools.html">Toolbox</a><a href="demo.html">Live replay</a><a href="https://github.com/Alouakhalid/aidmesh">GitHub</a></div></nav>
-<main>
+<main id="main">
 <section class="hero" style="min-height:62vh">
 <div class="kicker">AGENT 02 · CREWAI</div>
 <h1>🎯 The Triage<br><span>Lead</span></h1>
