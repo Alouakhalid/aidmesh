@@ -2,7 +2,7 @@
 
 <img src="docs/readme-assets/hero.svg" alt="AidMesh animated banner" width="100%">
 
-[![Live site](https://img.shields.io/badge/live%20site-GitHub%20Pages-34d399?style=for-the-badge)](https://alouakhalid.github.io/aidmesh/)
+[![Live site](https://img.shields.io/badge/live%20site-Railway-34d399?style=for-the-badge)](https://aidmesh-production.up.railway.app/)
 [![LangChain](https://img.shields.io/badge/LangChain-intake-a78bfa?style=for-the-badge)](https://python.langchain.com)
 [![CrewAI](https://img.shields.io/badge/CrewAI-4%20agents%20%2B%205%20tools-fb7185?style=for-the-badge)](https://crewai.com)
 [![Groq](https://img.shields.io/badge/Groq-gpt--oss--120b-f55036?style=for-the-badge)](https://groq.com)
@@ -11,13 +11,19 @@
 ![Languages](https://img.shields.io/badge/Arabic%20%2B%20English-bilingual-fbbf24?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey?style=for-the-badge)
 
-**[Open the live 3D site](https://alouakhalid.github.io/aidmesh/)** &nbsp;|&nbsp; **[Watch the replay](https://alouakhalid.github.io/aidmesh/demo.html)** &nbsp;|&nbsp; **[Meet the tools](https://alouakhalid.github.io/aidmesh/tools.html)**
+**[Open the live 3D site](https://aidmesh-production.up.railway.app/)** &nbsp;|&nbsp; **[Watch the replay](https://aidmesh-production.up.railway.app/demo.html)** &nbsp;|&nbsp; **[Meet the tools](https://aidmesh-production.up.railway.app/tools.html)** &nbsp;|&nbsp; [GitHub Pages mirror](https://alouakhalid.github.io/aidmesh/)
 
 </div>
 
 <p align="center"><img src="docs/readme-assets/demo.gif" alt="Animated demo: pressing Run the crew on the replay page and the agents' output streaming in" width="82%"><br><sub>Real screen capture of the live replay page. The run it replays is a recorded real run (see Real results).</sub></p>
 
 ---
+
+## Presentation video
+
+[![Watch the 90 second presentation](docs/media/poster.jpg)](docs/media/aidmesh-presentation.mp4)
+
+90 second walkthrough of the problem, the four agents and a real recorded run: [docs/media/aidmesh-presentation.mp4](docs/media/aidmesh-presentation.mp4). LinkedIn post text: [docs/linkedin-post.md](docs/linkedin-post.md).
 
 ## The problem
 
@@ -93,6 +99,8 @@ curl -X POST localhost:8000/api/run -H 'content-type: application/json' \
 ```
 
 ## Live API
+
+The Railway host serves both the website (same origin) and the API, so the site and its backend are one deployment. GitHub Pages is a static mirror that calls the same API.
 
 A small FastAPI backend runs the same crew on demand: **https://aidmesh-production.up.railway.app** (hosted on a Railway trial plan).
 
