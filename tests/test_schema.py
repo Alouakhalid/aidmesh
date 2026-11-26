@@ -1,5 +1,8 @@
-import json, pathlib
+import json
+import pathlib
+
 from aidmesh.schemas import Incidents
+
 
 def test_recorded_run_matches_schema():
     d = json.loads(pathlib.Path("docs/data/run.json").read_text())

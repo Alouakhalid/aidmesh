@@ -1,4 +1,7 @@
-import argparse, json, pathlib
+import argparse
+import json
+import pathlib
+
 from .pipeline import run_pipeline
 
 

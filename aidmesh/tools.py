@@ -1,6 +1,8 @@
 """CrewAI tool wrappers around aidmesh.tools_core. Each returns a compact JSON string."""
 import json
+
 from crewai.tools import tool
+
 from . import tools_core as core
 
 
@@ -18,13 +20,13 @@ def language_tool(text: str) -> str:
 
 @tool("geocode_place")
 def geocode_tool(place: str) -> str:
-    """Get latitude/longitude for a place name in Egypt using OpenStreetMap. Include the city, e.g. 'Sidi Gaber, Alexandria'."""
+    """Get latitude/longitude for a place name in Egypt using OpenStreetMap. Include the city, e.g. 'Sidi Gaber, Alexandria'."""  # noqa: E501
     return json.dumps(core.geocode(place), ensure_ascii=False)
 
 
 @tool("nearest_resources")
 def nearest_tool(lat: float, lon: float, kind: str = "") -> str:
-    """Find the nearest response resources (kind: hospital, dialysis, rescue, shelter, electric, water; empty for all). Sample registry."""
+    """Find the nearest response resources (kind: hospital, dialysis, rescue, shelter, electric, water; empty for all). Sample registry."""  # noqa: E501
     return json.dumps(core.nearest_resources(float(lat), float(lon), kind), ensure_ascii=False)
 
 

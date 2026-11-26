@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+
 import server.app as srv
 
 client = TestClient(srv.app)
@@ -18,21 +19,22 @@ def test_rejects_empty_and_oversized():
 
 def test_rate_limit(monkeypatch):
     monkeypatch.setattr(srv, "run_pipeline", lambda r: {"ok": True})
-    srv._hits.clear(); srv._day.clear(); srv._jobs.clear()
+    srv.limiter.reset(); srv.jobs.clear()
     body = {"reports": [{"id": "R1", "text": "Flood at Manshiya"}]}
     codes = [client.post("/api/run", json=body).status_code for _ in range(srv.PER_IP_PER_HOUR + 1)]
     assert codes[:-1] == [200] * srv.PER_IP_PER_HOUR and codes[-1] == 429
 
 
 def test_cors_header():
-    r = client.options("/api/run", headers={"Origin": "https://alouakhalid.github.io", "Access-Control-Request-Method": "POST"})
+    r = client.options("/api/run", headers={"Origin": "https://alouakhalid.github.io",
+                                        "Access-Control-Request-Method": "POST"})
     assert r.headers.get("access-control-allow-origin") == "https://alouakhalid.github.io"
 
 
 def test_job_flow(monkeypatch):
     import time
     monkeypatch.setattr(srv, "run_pipeline", lambda r: {"stages": {"x": "y"}})
-    srv._hits.clear(); srv._day.clear(); srv._jobs.clear()
+    srv.limiter.reset(); srv.jobs.clear()
     r = client.post("/api/run", json={"reports": [{"id": "R1", "text": "Flood at Manshiya"}]})
     jid = r.json()["job_id"]
     for _ in range(50):

@@ -11,5 +11,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install -r requirements-server.txt pytest httpx
-      - run: python -m pytest -q
+      - run: pip install -r requirements-server.txt pytest pytest-cov httpx ruff
+      - run: ruff check .
+      - run: python -m pytest --cov=aidmesh --cov=server --cov-report=term-missing

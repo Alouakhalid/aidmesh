@@ -1,6 +1,8 @@
 """Stage 1 (LangChain): turn messy multilingual reports into structured incidents."""
 import json
+
 from langchain_core.prompts import ChatPromptTemplate
+
 from .llm import langchain_llm
 from .schemas import Incidents
 

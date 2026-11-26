@@ -115,6 +115,12 @@ curl -X POST https://aidmesh-production.up.railway.app/api/run -H 'content-type:
 - Limits: at most 6 reports of 400 characters, 4 runs per IP per hour, 150 per day, 3 jobs at once. The Groq key is a host secret, never in the repo or in browser code.
 - Hosting is a trial plan with limited credit. If the API is busy or down, the website falls back to the recorded real run.
 
+## Engineering notes
+
+- **Efficiency:** geocoding and weather lookups are cached for 10 minutes, the resource registry is read once, regexes are compiled once, responses are gzip-compressed, static files get a short cache, and one crew run executes at a time with a bounded job queue.
+- **Security:** the Groq key lives only in a host secret. Inputs are length-limited, control characters are stripped, ids and sources are validated, requests are rate limited per visitor and per day (with `Retry-After`), API responses are never cached, and security headers are set. Failed runs report only the error type.
+- **Quality:** small modules (`limits.py`, `jobs.py`, `tools_core.py`), tool logic in plain testable functions, ruff lint and pytest with coverage in CI.
+
 ## Tests
 
 ```bash

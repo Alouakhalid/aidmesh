@@ -1,4 +1,5 @@
-import json, pytest
+import json
+
 from aidmesh import tools_core as c
 
 
@@ -17,7 +18,8 @@ def test_haversine_known_distance():
 
 def test_rumour_scores_low_and_specific_report_scores_high():
     rumour = c.credibility_score("BREAKING!!! dam collapsed in Alexandria, thousands dead, share now!!!", "social")
-    real = c.credibility_score("Clinic in Sidi Gaber lost power, 6 dialysis patients waiting, generator fuel ends in 3 hours.", "call")
+    real = c.credibility_score(
+        "Clinic in Sidi Gaber lost power, 6 dialysis patients waiting, generator fuel ends in 3 hours.", "call")
     assert rumour["label"] == "likely rumour" and rumour["score"] < 25
     assert real["label"] == "likely credible" and real["score"] >= 65
     assert real["score"] > rumour["score"]
@@ -81,3 +83,45 @@ def test_crewai_tool_wrappers_return_json():
     out = json.loads(credibility_tool.run(text="Bridge blocked on Corniche, 2 hours", source="call"))
     assert "score" in out
     assert language_tool.run(text="مرحبا") == "ar"
+
+
+def test_registry_is_read_once(tmp_path):
+    reg = tmp_path / "r.json"
+    reg.write_text(json.dumps([{"kind": "hospital", "name": "H", "lat": 31.2, "lon": 29.9}]))
+    first = c.nearest_resources(31.2, 29.9, "hospital", path=reg)
+    reg.write_text("[]")  # a second read would now return nothing
+    assert c.nearest_resources(31.2, 29.9, "hospital", path=reg) == first
+    assert first[0]["km"] == 0
+
+
+def test_json_lookups_are_cached(monkeypatch):
+    calls = []
+
+    class Resp:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self): return b'{"ok": true}'
+
+    def fake_open(req, timeout):
+        calls.append(req.full_url)
+        return Resp()
+
+    c._fetch_json.cache_clear()
+    monkeypatch.setattr(c.urllib.request, "urlopen", fake_open)
+    assert c._get_json("https://example.test/a") == {"ok": True}
+    assert c._get_json("https://example.test/a") == {"ok": True}
+    assert len(calls) == 1
+
+
+def test_failed_lookup_is_not_cached(monkeypatch):
+    c._fetch_json.cache_clear()
+    def boom(req, timeout): raise OSError("down")
+    monkeypatch.setattr(c.urllib.request, "urlopen", boom)
+    assert c.geocode("nowhere") == {"error": "OSError"}
+    assert c._fetch_json.cache_info().currsize == 0
+
+
+def test_credibility_reasons_order_is_stable():
+    r = c.credibility_score("URGENT!! share now, 300 dead near the bridge", "social")
+    assert r["reasons"][0].startswith("shouting")
+    assert r["reasons"][-1] == "unverified social post"

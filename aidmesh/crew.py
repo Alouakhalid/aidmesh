@@ -1,7 +1,8 @@
 """Stage 2 (CrewAI): four specialist agents verify, rank, dispatch and communicate."""
 from crewai import Agent, Crew, Process, Task
+
 from .llm import crewai_llm
-from .tools import credibility_tool, language_tool, geocode_tool, nearest_tool, weather_tool
+from .tools import credibility_tool, geocode_tool, language_tool, nearest_tool, weather_tool
 
 FORMAT_RULES = "Be concise. Plain text. No markdown tables."
 
@@ -12,12 +13,13 @@ def build_crew(incidents_json: str, reports_json: str = "[]") -> Crew:
     verifier = Agent(
         role="Verification Analyst",
         goal="Find duplicate reports and flag claims that are unverified or likely rumours.",
-        backstory="A fact-checker from a newsroom who learned that during floods, rumours cost lives and lorries.",
+        backstory=("A fact-checker from a newsroom who learned that during floods, "
+                   "rumours cost lives and lorries."),
         llm=llm, allow_delegation=False, verbose=False,
         tools=[credibility_tool, language_tool])
     triager = Agent(
         role="Triage Lead",
-        goal="Rank verified incidents by urgency (P1 life at risk now, P2 within hours, P3 later) with a one-line reason.",
+        goal="Rank verified incidents by urgency (P1 life at risk now, P2 within hours, P3 later) with a one-line reason.",  # noqa: E501
         backstory="An emergency physician who ranks by time-to-harm, not by who shouts loudest.",
         llm=llm, allow_delegation=False, verbose=False,
         tools=[geocode_tool, weather_tool])
@@ -44,9 +46,10 @@ def build_crew(incidents_json: str, reports_json: str = "[]") -> Crew:
         description="Rank the non-rumour incidents P1, P2 or P3 with one-line reasons. " + FORMAT_RULES,
         expected_output="Ranked list with priority and reason.", agent=triager, context=[t1])
     t3 = Task(
-        description=("For each ranked incident: geocode_place the location (add Alexandria, Egypt), call nearest_resources for the right kind, "
-                     "and weather_flood_risk once for the city. Then give: the named nearest resource with distance in km, first safe action, and one hazard "
-                     "to check before arrival. " + FORMAT_RULES),
+        description=("For each ranked incident: geocode_place the location (add Alexandria, Egypt), "
+                     "call nearest_resources for the right kind, and weather_flood_risk once for the city. "
+                     "Then give: the named nearest resource with distance in km, first safe action, "
+                     "and one hazard to check before arrival. " + FORMAT_RULES),
         expected_output="Dispatch plan in priority order.", agent=dispatcher, context=[t2])
     t4 = Task(
         description=("Write one Arabic and one English SMS alert (under 160 characters each) for the top "
