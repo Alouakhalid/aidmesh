@@ -77,6 +77,6 @@ body.open #portal{pointer-events:none}
 setTimeout(()=>document.body.classList.add('open'),1100);
 addEventListener('wheel',()=>document.body.classList.add('open'),{once:true});
 addEventListener('touchmove',()=>document.body.classList.add('open'),{once:true});
-document.getElementById('portal').addEventListener('transitionend',e=>{if(e.propertyName==='transform')document.getElementById('portal').remove()});
+document.getElementById('portal').addEventListener('transitionend',e=>{if(e.propertyName==='transform'&&e.target.classList.contains('half'))e.target.closest('#portal')?.remove()});
 </script>
 </body></html>
