@@ -2,7 +2,7 @@
 
 <img src="docs/readme-assets/hero.svg" alt="AidMesh animated banner" width="100%">
 
-[![Live site](https://img.shields.io/badge/live%20site-GitHub%20Pages-22d3ee?style=for-the-badge)](https://alouakhalid.github.io/aidmesh/)
+[![Live site](https://img.shields.io/badge/live%20site-GitHub%20Pages-34d399?style=for-the-badge)](https://alouakhalid.github.io/aidmesh/)
 [![LangChain](https://img.shields.io/badge/LangChain-intake-a78bfa?style=for-the-badge)](https://python.langchain.com)
 [![CrewAI](https://img.shields.io/badge/CrewAI-4%20agents%20%2B%205%20tools-fb7185?style=for-the-badge)](https://crewai.com)
 [![Groq](https://img.shields.io/badge/Groq-gpt--oss--120b-f55036?style=for-the-badge)](https://groq.com)
@@ -141,6 +141,9 @@ tests/            pytest suite
 - Credibility scores are simple rules, not ground truth. A real rumour can look specific.
 - The LLM can add details that did not come from a tool. In the recorded run the dispatcher mentioned a sand-storm hazard that no weather tool returned.
 - The crew with tools takes about 1.5 to 2 minutes per run. The website replays a recorded real run and, when the hosted API is reachable, can run the crew live. The hosted API is on a trial plan with limited credit.
+
+- The hosted API runs on a trial plan with limited credit and a per-visitor rate limit. If it is busy or out of credit, the site shows the recorded run and says so.
+- The "recorded run" shown by default is one real run on six sample reports; live runs use whatever report you type (one report, max 400 characters on the site).
 
 ## License
 

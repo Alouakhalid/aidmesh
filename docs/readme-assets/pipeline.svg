@@ -1,48 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="AidMesh pipeline: raw reports, LangChain intake, then four CrewAI agents: verification, triage, dispatcher, communicator">
-<rect width="1200" height="300" rx="18" fill="#080d1e"/>
+<rect width="1200" height="300" rx="18" fill="#050b09"/>
 <text x="600" y="38" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#dbe4ff">From noise to a plan, in five hand-offs</text>
-<line x1="190" y1="150" x2="232" y2="150" stroke="#475089" stroke-width="2.5" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite"/></line>
-<circle r="5" fill="#a78bfa" cy="150"><animate attributeName="cx" values="190;232" dur="1.8s" begin="0.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="1.8s" begin="0.0s" repeatCount="indefinite"/></circle>
-<line x1="382" y1="150" x2="424" y2="150" stroke="#475089" stroke-width="2.5" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite"/></line>
-<circle r="5" fill="#22d3ee" cy="150"><animate attributeName="cx" values="382;424" dur="1.8s" begin="0.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="1.8s" begin="0.5s" repeatCount="indefinite"/></circle>
-<line x1="574" y1="150" x2="616" y2="150" stroke="#475089" stroke-width="2.5" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite"/></line>
-<circle r="5" fill="#fb7185" cy="150"><animate attributeName="cx" values="574;616" dur="1.8s" begin="1.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="1.8s" begin="1.0s" repeatCount="indefinite"/></circle>
-<line x1="766" y1="150" x2="808" y2="150" stroke="#475089" stroke-width="2.5" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite"/></line>
+<line x1="190" y1="150" x2="232" y2="150" stroke="#2f6b55" stroke-width="2.5" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite"/></line>
+<circle r="5" fill="#22d3ee" cy="150"><animate attributeName="cx" values="190;232" dur="1.8s" begin="0.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="1.8s" begin="0.0s" repeatCount="indefinite"/></circle>
+<line x1="382" y1="150" x2="424" y2="150" stroke="#2f6b55" stroke-width="2.5" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite"/></line>
+<circle r="5" fill="#34d399" cy="150"><animate attributeName="cx" values="382;424" dur="1.8s" begin="0.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="1.8s" begin="0.5s" repeatCount="indefinite"/></circle>
+<line x1="574" y1="150" x2="616" y2="150" stroke="#2f6b55" stroke-width="2.5" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite"/></line>
+<circle r="5" fill="#fbbf24" cy="150"><animate attributeName="cx" values="574;616" dur="1.8s" begin="1.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="1.8s" begin="1.0s" repeatCount="indefinite"/></circle>
+<line x1="766" y1="150" x2="808" y2="150" stroke="#2f6b55" stroke-width="2.5" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite"/></line>
 <circle r="5" fill="#34d399" cy="150"><animate attributeName="cx" values="766;808" dur="1.8s" begin="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="1.8s" begin="1.5s" repeatCount="indefinite"/></circle>
-<line x1="958" y1="150" x2="1000" y2="150" stroke="#475089" stroke-width="2.5" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite"/></line>
+<line x1="958" y1="150" x2="1000" y2="150" stroke="#2f6b55" stroke-width="2.5" stroke-dasharray="6 6"><animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite"/></line>
 <circle r="5" fill="#fbbf24" cy="150"><animate attributeName="cx" values="958;1000" dur="1.8s" begin="2.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="1.8s" begin="2.0s" repeatCount="indefinite"/></circle>
 <g font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
-<rect x="40" y="95" width="150" height="110" rx="14" fill="#0e1530" stroke="#64748b" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.0s" repeatCount="indefinite"/></rect>
+<rect x="40" y="95" width="150" height="110" rx="14" fill="#08130f" stroke="#64748b" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.0s" repeatCount="indefinite"/></rect>
 <text x="115" y="130" font-size="15" font-weight="700" fill="#64748b">Raw reports</text>
 <text x="115" y="157" font-size="12.5" fill="#c3cdf0">calls, SMS, social</text>
 <text x="115" y="178" font-size="12.5" fill="#8fa0d6">AR + EN</text>
 <text x="115" y="237" font-size="12" fill="#6b7aa8">input</text></g>
 <g font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
-<rect x="232" y="95" width="150" height="110" rx="14" fill="#0e1530" stroke="#a78bfa" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.5s" repeatCount="indefinite"/></rect>
-<text x="307" y="130" font-size="15" font-weight="700" fill="#a78bfa">LangChain intake</text>
+<rect x="232" y="95" width="150" height="110" rx="14" fill="#08130f" stroke="#22d3ee" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.5s" repeatCount="indefinite"/></rect>
+<text x="307" y="130" font-size="15" font-weight="700" fill="#22d3ee">LangChain intake</text>
 <text x="307" y="157" font-size="12.5" fill="#c3cdf0">ChatGroq + Pydantic</text>
 <text x="307" y="178" font-size="12.5" fill="#8fa0d6">typed incidents</text>
 <text x="307" y="237" font-size="12" fill="#6b7aa8">stage 1</text></g>
 <g font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
-<rect x="424" y="95" width="150" height="110" rx="14" fill="#0e1530" stroke="#22d3ee" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1.0s" repeatCount="indefinite"/></rect>
-<text x="499" y="130" font-size="15" font-weight="700" fill="#22d3ee">Verification</text>
+<rect x="424" y="95" width="150" height="110" rx="14" fill="#08130f" stroke="#34d399" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1.0s" repeatCount="indefinite"/></rect>
+<text x="499" y="130" font-size="15" font-weight="700" fill="#34d399">Verification</text>
 <text x="499" y="157" font-size="12.5" fill="#c3cdf0">credibility_score</text>
 <text x="499" y="178" font-size="12.5" fill="#8fa0d6">detect_language</text>
 <text x="499" y="237" font-size="12" fill="#6b7aa8">stage 2</text></g>
 <g font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
-<rect x="616" y="95" width="150" height="110" rx="14" fill="#0e1530" stroke="#fb7185" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1.5s" repeatCount="indefinite"/></rect>
-<text x="691" y="130" font-size="15" font-weight="700" fill="#fb7185">Triage</text>
+<rect x="616" y="95" width="150" height="110" rx="14" fill="#08130f" stroke="#fbbf24" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1.5s" repeatCount="indefinite"/></rect>
+<text x="691" y="130" font-size="15" font-weight="700" fill="#fbbf24">Triage</text>
 <text x="691" y="157" font-size="12.5" fill="#c3cdf0">P1 / P2 / P3</text>
 <text x="691" y="178" font-size="12.5" fill="#8fa0d6">time-to-harm</text>
 <text x="691" y="237" font-size="12" fill="#6b7aa8">stage 3</text></g>
 <g font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
-<rect x="808" y="95" width="150" height="110" rx="14" fill="#0e1530" stroke="#34d399" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="2.0s" repeatCount="indefinite"/></rect>
+<rect x="808" y="95" width="150" height="110" rx="14" fill="#08130f" stroke="#34d399" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="2.0s" repeatCount="indefinite"/></rect>
 <text x="883" y="130" font-size="15" font-weight="700" fill="#34d399">Dispatcher</text>
 <text x="883" y="157" font-size="12.5" fill="#c3cdf0">geocode, weather</text>
 <text x="883" y="178" font-size="12.5" fill="#8fa0d6">nearest_resources</text>
 <text x="883" y="237" font-size="12" fill="#6b7aa8">stage 4</text></g>
 <g font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
-<rect x="1000" y="95" width="150" height="110" rx="14" fill="#0e1530" stroke="#fbbf24" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="2.5s" repeatCount="indefinite"/></rect>
+<rect x="1000" y="95" width="150" height="110" rx="14" fill="#08130f" stroke="#fbbf24" stroke-width="2"><animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="2.5s" repeatCount="indefinite"/></rect>
 <text x="1075" y="130" font-size="15" font-weight="700" fill="#fbbf24">Communicator</text>
 <text x="1075" y="157" font-size="12.5" fill="#c3cdf0">AR + EN alerts</text>
 <text x="1075" y="178" font-size="12.5" fill="#8fa0d6">rumour correction</text>
